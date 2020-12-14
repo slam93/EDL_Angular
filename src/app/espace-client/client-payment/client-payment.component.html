@@ -1,0 +1,79 @@
+<section>
+
+    <div>
+        <h3 class="d-inline"> Mes factures</h3>
+        <!-- <button type="button" class=" btn btn-dark d-inline float-right" >
+            Nouveau
+        </button> -->
+    </div>
+    <br>
+
+    <app-dt-payment [ListePayment]="ListePayment" (emitView)="proc_emit_view_payement($event)"></app-dt-payment>
+
+    <!-- ##############         Pop up detail garage | Value actual     #################         --->
+    <ng-template #detailPayement id="modal-detailPayement" let-c="close" let-d="dismiss">
+
+        <div class="modal-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <img src="assets/images/stripe-logo.png"
+                            style="box-shadow: 0px 0px 10px #0000003B; width: 110px; height: 30px;" />
+                    </div>
+
+                    <div class="col-lg-5" style="text-align: center;">
+                        Payement
+                    </div>
+
+                    <div class="col-lg-4">
+                        <strong>{{selectPayment.createdAt | date: 'dd MMM yyyy'}}</strong> 
+                    </div>
+
+                </div>
+            </div>
+
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="proc_close()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+
+        </div>
+
+        <div class="modal-body" class="modal-detail-test">
+
+
+            <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0">Réference</h6>
+                        <small class="text-muted">Description</small>
+                    </div>
+                    <span class="text-muted">{{selectPayment.reference}}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0">Commentaire</h6>
+                        <small class="text-muted">Description</small>
+                    </div>
+                    <span class="text-muted">{{selectPayment.comments}}</span>
+                </li>
+                <!-- <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0">Third item</h6>
+                        <small class="text-muted">Brief description</small>
+                    </div>
+                    <span class="text-muted">$5</span>
+                </li>-->
+                <li class="list-group-item d-flex justify-content-between bg-light">
+                    <div class="text-success">
+                        <h6 class="my-0">Total (EUR)</h6>
+                        <small></small>
+                    </div>
+                    <span class="text-success">{{selectPayment.totalAmount}} €</span>
+                </li> 
+                
+            </ul>
+
+        </div>
+    </ng-template>
+
+</section>

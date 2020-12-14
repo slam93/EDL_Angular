@@ -1,0 +1,54 @@
+<div>
+  <p class="text-center">{{this.location.intro_signalerProbleme}}</p>
+  <div>
+    <form [formGroup]="registerForm" (ngSubmit)="signalisation()">
+      <div class="form-group">
+        <img class="imgInput" readonly src="assets/image/icon/incident-piece.png" />
+        <input type="text" formControlName="piece" class="form-control input-signalisation">
+      </div>
+      <div class="form-group">
+        <img class="imgInputSelect" src="assets/image/icon/incident-objet.png" />
+        <select formControlName="equipmentId" class="form-control input-signalisation">
+          <option *ngFor="let item of equipementPiece" value={{item.id}}>
+            {{(this.langue == 'FR'?item.description_FR:item.description_EN)}}
+          </option>
+        </select>
+        <div *ngIf="submitted && this.registerForm.controls['equipmentId'].errors" class="div_error">
+          <div *ngIf="this.registerForm.controls['equipmentId'].errors.required" >Champs requis</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="number" formControlName="quantity" class="form-control input-signalisation" placeholder={{this.location.signalerProbleme_quantite}}>
+        <div *ngIf="submitted && this.registerForm.controls['quantity'].errors" class="div_error">
+          <div *ngIf="this.registerForm.controls['quantity'].errors.required" >Champs requis</div>
+          <div *ngIf="this.registerForm.controls['quantity'].errors.min" >Quantité doit être supérieur à 0</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <img class="imgInput" src="assets/image/icon/incident-etat.png" />
+        <input type="text" formControlName="etat" class="form-control input-signalisation" placeholder={{this.location.signalerProbleme_etat}} >
+        <div *ngIf="submitted && this.registerForm.controls['etat'].errors" class="div_error">
+          <div *ngIf="this.registerForm.controls['etat'].errors.required" >Champs requis</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <img class="imgInput" src="assets/image/icon/incident-chat.png" style="bottom: 150px" />
+        <textarea formControlName="explication"
+                  style="margin-top: 0!important;"
+                  type="text" class="form-control input-signalisation"
+                  placeholder={{this.location.signalerProbleme_explication}} >
+        </textarea>
+      </div>
+
+      <div class="text-center" *ngIf="afficheNotifDanger == false">
+        <button *ngIf="afficheChargement == false" type="submit" class="btn btn-primary">{{this.location?.btn_reinitialisation}}</button>
+        <button *ngIf="afficheChargement == true" type="button" class="btn btn-primary opacity">{{this.location?.btn_reinitialisation}}</button>
+      </div>
+      <div class="col-md-5" *ngIf="afficheNotifDanger == true"  class="alert alert-danger my-danger" role="alert">
+        {{messageErreur}}
+      </div>
+    </form>
+  </div>
+</div>

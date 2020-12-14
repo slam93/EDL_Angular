@@ -1,0 +1,191 @@
+
+Diagnostic 1
+
+<!-- <div class="modal-header">
+  <h5>Obtenez votre devis gratuit immédiatement et Réservez votre rendez-vous en ligne</h5>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="d('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body modal-option-2">
+  <div class="row">
+    <div class="col-md-6">
+      <form>
+        <h6>Veuillez décrire le problème</h6>
+
+        <ngb-accordion #acc="ngbAccordion" activeIds="config-panel-moteur">
+
+          <ngb-panel title="One" class="acc-title" id="config-panel-moteur">
+            <ng-template ngbPanelHeader let-opened="opened">
+              <div class="card-header" id="headingOne" >
+                <div class="acc-title" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  <img src="assets/images/moteur.jpg" />
+                  <h4>Moteur<button ngbPanelToggle class="btn btn-link p-0">+</button></h4>
+                </div>
+              </div>
+            </ng-template>
+
+            <ng-template ngbPanelContent>
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
+              aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+              sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+              craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+              occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
+              labore sustainable VHS.
+            </ng-template>
+          </ngb-panel>
+
+
+          <ngb-panel title="One" class="acc-title" id="config-panel-freinage">
+            <ng-template ngbPanelHeader let-opened="opened">
+              <div class="card-header" id="headingTwo">
+                <div class="acc-title" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                  <img src="assets/images/freinage.jpg" />
+                  <h4>Freinage <button ngbPanelToggle class="btn btn-link p-0">+</button></h4>
+                </div>
+              </div>
+            </ng-template>
+
+            <ng-template ngbPanelContent>
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
+              aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+              sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+              craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+              occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
+              labore sustainable VHS.
+            </ng-template>
+          </ngb-panel>
+
+          <ngb-panel title="One" class="acc-title" id="config-panel-entretien">
+            <ng-template ngbPanelHeader let-opened="opened">
+
+              <div class="card-header" id="headingThree">
+                <div class="acc-title" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                  <img src="assets/images/entretien.jpg" />
+                  <h4>Entretien <button ngbPanelToggle class="btn btn-link p-0">+</button></h4>
+                </div>
+              </div>
+            </ng-template>
+
+            <ng-template ngbPanelContent>
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
+              aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+              sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+              craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+              occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
+              labore sustainable VHS.
+            </ng-template>
+          </ngb-panel>
+
+          <ngb-panel title="One" class="acc-title" id="config-panel-clim">
+            <ng-template ngbPanelHeader let-opened="opened">
+              <div class="card-header" id="headingFour">
+                <div class="acc-title" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                  <img src="assets/images/clim.jpg" />
+                  <h4>Refroidissement & Climatisation<button ngbPanelToggle class="btn btn-link p-0">+</button></h4>
+                </div>
+              </div>
+            </ng-template>
+
+            <ng-template ngbPanelContent>
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
+              aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+              sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+              craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+              occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
+              labore sustainable VHS.
+            </ng-template>
+          </ngb-panel>
+
+          <ngb-panel title="One" class="acc-title" id="config-panel-echappement">
+            <ng-template ngbPanelHeader let-opened="opened">
+              <div class="card-header" id="headingFive">
+                <div class="acc-title" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                  <img src="assets/images/echappement.jpg" />
+                  <h4>Echappement<button ngbPanelToggle class="btn btn-link p-0">+</button></h4>
+                </div>
+              </div>
+            </ng-template>
+
+            <ng-template ngbPanelContent>
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
+              aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+              sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+              craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+              occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
+              labore sustainable VHS.
+            </ng-template>
+          </ngb-panel>
+
+        </ngb-accordion>
+
+        <div class="form-group form-file">
+          <label>Choisir une autre photo</label>
+          <input type="file" data-buttonText="Your label here.">
+        </div>
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <form>
+        <h6>Décrivez votre voiture </h6>
+        <div class="form-group">
+          <label>Entrer votre numéro de plaque</label>
+          <input class="form-control" type="text">
+        </div>
+        <p>Ou</p>
+        <div class="form-row">
+        <div class="form-group col-sm select-cont">
+          <label>Marque</label>
+          <select class="form-control">
+            <option>Lorem ipsum dolor</option>
+            <option>Lorem ipsum dolor</option>
+            <option>Lorem ipsum dolor</option>
+            <option>Lorem ipsum dolor</option>
+            <option>Lorem ipsum dolor</option>
+            </select>
+        </div>
+        <div class="form-group col-sm select-cont">
+          <label>Modèle</label>
+          <select class="form-control">
+            <option>Lorem ipsum dolor</option>
+            <option>Lorem ipsum dolor</option>
+            <option>Lorem ipsum dolor</option>
+            <option>Lorem ipsum dolor</option>
+            <option>Lorem ipsum dolor</option>
+            </select>
+        </div>
+        </div>
+        <h6>Adresse de l'intervention</h6>
+        <div class="form-row">
+          <div class="form-group col-sm-8">
+          <label>Votre adresse</label>
+          <input class="form-control" type="text">
+          </div>
+          <div class="form-group col-sm-4">
+          <a href="JavaScript:Void(0);"><span class="material-icons">place</span> Géocaliser</a>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Valider</button>
+      </form>
+    </div>
+  </div>
+</div> -->
+
+<!-- <div>Etape2 : Selection Diagnostic 2 ,  <a href="Javascript:void(0);" (click)="proc_return_step1()">Retour</a> </div>
+
+<div class="flex-container flex-row">
+
+  <ng-container *ngFor="let action of listeSelectDiagnostic2">
+    <div style="padding: 5px; width:50%; ">
+      <button class="btn btn-success" style="widows: 100%; text-align: left; font-size: 12px"
+      (click)="proc_clic_diag2()" type="button">
+        {{action.description}}
+      </button>
+    </div>
+  </ng-container>
+
+
+</div> -->
+
+

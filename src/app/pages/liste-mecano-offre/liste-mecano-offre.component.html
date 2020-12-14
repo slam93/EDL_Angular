@@ -1,0 +1,209 @@
+<body class="list">
+	
+	<div id="main" class="animate__animated animate__fadeInLeft">
+		<header>
+			<button class="openbtn" onclick="openNav()">☰</button>  
+			<div id="nav" class="container nav-top">
+				<div class="row">
+                    <div class="col-md">
+                            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+                    </div>
+                    <div class="col-md list-nav">
+                        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modal-suscribe">Espace client</a>
+                        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modal-suscribe">Espace mecano</a>
+                    </div>
+				</div>
+			</div>
+			<div class="container logo-list">
+				<a href="#"><img src="assets/images/logo.png" /></a>
+			</div>
+			
+			<div class="head-list">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-5 title-list">
+							<p><span class="material-icons">wb_incandescent</span> {{contextHeader}}</p>
+						</div>
+						<div class="col-md list-infos">
+							<p><strong>Votre véhicule :</strong> {{vehicleBand | titlecase}} {{vehicleModel | titlecase}} </p>  
+							<p><strong>Lieu de l'intervention :</strong> {{interventionAdresse | titlecase}} </p>
+							<a class="btn btn-primary" (click)="proc_route_accueil()">Choisir une nouvelle prestation</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</header>
+		
+		<section class="view-list">
+			<div class="container">
+				<h1>Liste des garages prestaires</h1>
+
+				<ng-container *ngFor="let offre of DataOffre">
+
+					<div class="row list-item">
+						<div class="col-md">
+							<div class="garage-infos">
+								<img src="assets/images/garage-logo.jpg" />
+								<h2>{{offre.mecano.nom}}</h2>
+								<p class="price">{{offre.prixIntervention}}€</p>
+								<p class="adress"><span class="material-icons">place</span> {{offre.mecano.adresse}}</p>
+								<p class="stars"><span class="material-icons red">star</span><span class="material-icons red">star</span><span class="material-icons red">star</span><span class="material-icons red">star</span><span class="material-icons">star</span></p>
+								<p class="map">à 08km - à 15 Minute de vous</p>
+							</div>
+							<div class="competences">
+								<h4>Compétences</h4>
+								<ul>
+									<li>Transmission</li>
+									<li>Moteur</li>
+									<li>Carrosserie</li>
+								</ul>
+							</div>
+							<a href="#" class="btn btn-primary"><span class="material-icons">chat_bubble_outline</span> Discuter avec ce mecano</a>
+						</div>
+						<div class="col-md calendar-list">
+							<div class="cal-nav">
+								<a href="#" class="prev" ><span class="material-icons">chevron_left</span></a>
+								<a href="#" class="next" ><span class="material-icons">chevron_right</span></a>
+							</div>
+							<ng-container *ngFor="let dayIntervention of offre.listeIntervention">
+								<div class="cal-day">
+									<h5>{{dayIntervention.day}}</h5>
+
+									<ng-container *ngFor="let interven of dayIntervention.intervention">
+										<a *ngIf="interven.disponible == false" data-toggle="modal" data-target="#modal-garage-detail" (click)="open_md_detailIntervention(offre, dayIntervention.day, interven.heure )">{{interven.heure}}</a>
+										<span *ngIf="interven.disponible == true">----</span>
+									</ng-container>
+									
+								</div>
+							</ng-container>
+
+						</div>
+					</div>
+				</ng-container>
+
+			</div>
+		</section>
+		
+		<footer>
+			<div class="container newsletter">
+				<form>
+					<div class="form-row">
+						<div class="col-md-5">
+							Recevez nos news par email
+						</div>
+						<div class="form-group col-md-7">
+							<input type="email" class="form-control">
+							<button type="submit" class="btn btn-primary">S'inscrire</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="footer-infos">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg">
+							<a href="#"><img src="assets/images/logo.png" /></a>
+							<p>Vous êtes mécaniciens et souhaitez rejoindre l'aventure FlexnCars, laissez nous vos coordonnées. N'hésitez pas à nous contacter, nous serons ravis de vous aider.</p>
+						</div>
+						<div class="col-lg">
+							<ul>
+								<li><span class="material-icons">room</span> 92 rue Henri ghesquiere app1</li>
+								<li><a href="tel:06 18 64 48 69"><span class="material-icons">call</span> 06 18 64 48 69</a></li>
+								<li><a href="mailto:hazaoui@icloud.com"><span class="material-icons">email</span> hazaoui@icloud.com</a></li>
+							</ul>
+						</div>
+						<div class="col-lg">
+							<ul>
+								<li><a href="#">CGU / CGV</a></li>
+								<li><a href="#">Politique de confidentialité</a></li>
+								<li><a href="#">Mentions légales</a></li>
+							</ul>
+						</div>
+					</div>
+					<p class="text-center copyright">Copyright © 2020 | Tous droits réservé</p>
+				</div>
+			</div>
+		</footer>
+	</div>
+	
+	<!---Pop up detail garage--->
+	<ng-template #detailIntervention  id="modal-detailIntervention" let-c="close" let-d="dismiss">
+		<div class="modal-header">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-5 title-list">
+						<p><span class="material-icons">{{ValueDiagnostic1.icone}}</span> {{ValueDiagnostic1.description}}</p>
+					</div>
+					<div class="col-md list-infos">
+						<p><strong>Votre véhicule :</strong> {{vehicleBand | titlecase}} {{vehicleModel | titlecase}}</p>
+						<p><strong>Lieu de l'intervention :</strong> {{interventionAdresse | titlecase}}</p>
+					</div>
+				</div>
+			</div>
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="proc_close()">
+			<span aria-hidden="true">&times;</span>
+		</button>
+		</div>
+		<div class="modal-body" class="modal-detail-test">
+			<div class="row list-item">
+				<div class="col-md">
+					<div class="garage-infos">
+						<img src="assets/images/garage-logo.jpg" />
+						<h2>{{selectMecano.mecano.nom}}</h2>
+						<p class="adress"><span class="material-icons">chat_bubble_outline</span> {{selectMecano.mecano.adresse}}</p>
+						<p class="stars"><span class="material-icons red">star</span><span class="material-icons red">star</span><span class="material-icons red">star</span><span class="material-icons red">star</span><span class="material-icons">star</span></p>
+						<p class="map">à 08km - à 15 Minute de vous</p>
+					</div>
+					<div class="competences">
+						<h4>Compétences</h4>
+						<ul>
+							<li>Transmission</li>
+							<li>Moteur</li>
+							<li>Carrosserie</li>
+						</ul>
+					</div>
+					<a class="btn btn-primary" (click)="proc_route_accueil()">
+						<span class="material-icons">chat_bubble_outline</span> Choisir une nouvelle prestation
+					</a>
+				</div>
+				<div class="col-md garage-price">
+					<p class="price">{{selectMecano.prixIntervention}}€</p>
+					<p class="rdv"><strong>Rendez-vous : </strong>{{selectDay}} à {{selectHeure}}</p>
+					<a href="#" class="btn btn-primary"><span class="material-icons">chat_bubble_outline</span> Discuter avec ce mecano</a>
+				</div>
+			</div>
+			<div class="text-center footer-detail">
+				<p>Vous pourrez modifier ou annuler votre rendez-vous en cas d'empêchement. Le solde de la commande est à régler au mécano une fois seulement la prestation effectuée. </p>
+				<a class="btn btn-primary" (click)="proc_connexionSuiteAction(selectMecano.mecano, selectDay, selectHeure)">Valider</a>
+			</div>
+		</div>
+	</ng-template>
+
+	<!---Pop up Connection--->
+	<ng-template #connect  id="modal-connect" let-c="close" let-d="dismiss">
+		<div class="modal-header">
+			<h5>Identifiez-vous pour continuer et obtenir votre tarif immédiatement</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="proc_close()" >
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+
+		<app-login (close)="onClose($event)"></app-login>
+	</ng-template>
+
+	
+	<script>
+		function openNav() {
+		document.getElementById("nav").style.width = "80%";
+		}
+
+		function closeNav() {
+		document.getElementById("nav").style.width = "0";
+		}
+	</script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="js/bootstrap.min.js"></script>
+
+</body>

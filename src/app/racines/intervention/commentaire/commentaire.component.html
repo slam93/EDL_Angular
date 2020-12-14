@@ -1,0 +1,19 @@
+<div>Etape 3 : Ajout commentaire /photo (intervention) <a href="Javascript:void(0);" (click)="proc_return_step2()">Retour</a> </div>
+
+<form class="form-commentaire">
+
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1"> Veuillez décrire le problème </label>
+      <textarea class="form-control" id="textDesciptionProbleme" name="textDesciptionProbleme" rows="3">
+      </textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="exampleFormControlFile1"> Choisir une autre photo </label>
+      <input type="file" class="form-control-file" id="exampleFormControlFile1">
+    </div>
+
+    <button class="btn btn-sm btn-success btn-dark" type="button"
+    (click)="proc_clic_envoyeCom()">Envoyer</button>
+
+</form>

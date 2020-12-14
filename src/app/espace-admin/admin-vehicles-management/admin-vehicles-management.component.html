@@ -1,0 +1,97 @@
+<section>
+    <div class="mt-3">
+        <h3 class="d-inline">Mes véhicules</h3>
+        <button type="button" class="btn btn-md btn-primary d-inline float-right" (click)="openModalForAction(actionVehicle)">
+            Nouveau
+        </button>
+    </div>
+
+    <div class="mt-4">
+        <table datatable class="row-border hover" [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+            <thead>
+                <tr>
+                    <th>Marque</th>
+                    <th>Model</th>
+                    <th>Année</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of listVehicles" class=" animate__animated animate__flipInX cursor-cl">
+                    <td (click)="emitDataModal(item)">{{item.band}}</td>
+                    <td (click)="emitDataModal(item)">{{item.model}}</td>
+                    <td (click)="emitDataModal(item)">{{item.year}}</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm grad-delete" (click)="beforeDeleteVehiicle(item.id)">
+                            <span class="material-icons" style="margin-top: 2px;">delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<ng-template #actionVehicle>
+    <div class="modal-header">
+        <h5 *ngIf="checkAction === 'add'">Ajout véhicule</h5>
+        <h5 *ngIf="checkAction === 'update'">Modifier le véhicule</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body modal-connect">
+        <div class="form-group">
+            <form>
+                <label>Marque</label>
+                <input class="form-control" type="text" name="vehicleBand" [(ngModel)]="vehicleBand">
+            </form>
+        </div>
+        <div class="form-group">
+            <form>
+                <label>Model</label>
+                <input class="form-control" type="text" name="vehicleModel" [(ngModel)]="vehicleModel">
+            </form>
+        </div>
+        <div class="form-group">
+            <form>
+                <label>Année</label>
+                <input class="form-control" type="text" name="vehicleYear" [(ngModel)]="vehicleYear">
+            </form>
+        </div>
+    </div>
+
+    <div class="form-group d-flex justify-content-center mt-5">
+        <button *ngIf="checkAction === 'update'" class="btn btn-md btn-primary mr-1" (click)="updateVehicle()">
+            Valider
+        </button>
+        <button *ngIf="checkAction === 'add'" class="btn btn-md btn-primary mr-1" (click)="addvehicle()">
+            Valider
+        </button>
+        <button class="btn btn-md btn-primary ml-1" (click)="closeModal()">
+            Annuler
+        </button>
+    </div>
+</ng-template>
+
+<!-- Popup confimation -->
+<ng-template #confirmDelete>
+    <div class="modal-header">
+        <h5>Suppression</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body modal-connect d-flex justify-content-center">
+        Etes-vous sûr de vouloir supprimer ce véhicule ?
+    </div>
+
+    <div class="form-group d-flex justify-content-center mt-5">
+        <button class="btn btn-md btn-primary mr-1" (click)="deleteVehicle()">
+            Valider
+        </button>
+        <button class="btn btn-md btn-primary ml-1" (click)="closeModal()">
+            Annuler
+        </button>
+    </div>
+</ng-template>

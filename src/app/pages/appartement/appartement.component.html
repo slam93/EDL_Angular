@@ -1,0 +1,74 @@
+<div>
+  <div class="div_header">
+    <h4 class="text-white text-uppercase">{{this.location.nom_appartement}}</h4>
+  </div>
+  <div class="container">
+    <p class="text-center">{{this.location.intro_appartement}}</p>
+    <div>
+      <form [formGroup]="registerForm" (ngSubmit)="envoie()" >
+        <div class="div_icon_input">
+          <img class="imgManual" src="assets/image/icon/User.png" />
+        </div>
+        <div class="row">
+          <div class="col-md-4 col-6 offset-md-2">
+            <input type="text" formControlName="first_name"  class="form-control input_appart" placeholder={{this.location.config_prenom}}>
+            <div *ngIf="submitted && this.registerForm.controls['first_name'].errors" class="div_error text-center">
+              <div *ngIf="this.registerForm.controls['first_name'].errors.required" >Champs requis</div>
+            </div>
+          </div>
+          <div class="col-md-4 col-6">
+            <input type="text" formControlName="last_name" class="form-control input_appart" placeholder={{this.location.config_nom}}>
+            <div *ngIf="submitted && this.registerForm.controls['last_name'].errors" class="div_error text-center">
+              <div *ngIf="this.registerForm.controls['last_name'].errors.required" >Champs requis</div>
+            </div>
+          </div>
+        </div>
+        <div class="div_icon_input">
+          <img class="imgManual" src="assets/image/icon/Mail.png" />
+        </div>
+        <div class="row">
+          <div class="col-md-8 col-12 offset-md-2">
+            <input type="email" formControlName="email" class="form-control input_appart" placeholder={{this.location.config_email}}>
+            <div *ngIf="submitted && this.registerForm.controls['email'].errors" class="div_error text-center">
+              <div *ngIf="this.registerForm.controls['email'].errors.required">Champs requis</div>
+              <div *ngIf="this.registerForm.controls['email'].errors.email">Adresse mail invalide</div>
+            </div>
+          </div>
+        </div>
+        <div class="div_icon_input">
+          <img class="imgManual" src="assets/image/icon/Appartement.png" />
+        </div>
+        <div class="row">
+          <div class="col-md-8 col-12 offset-md-2">
+            <input type="text" readonly formControlName="appartmentId" class="form-control input_appart" placeholder={{this.location.config_num_appartement}}>
+            <div *ngIf="submitted && this.registerForm.controls['appartmentId'].errors" class="div_error text-center">
+              <div *ngIf="this.registerForm.controls['appartmentId'].errors.required" >Champs requis</div>
+            </div>
+          </div>
+        </div>
+        <div class="div_icon_input">
+          <img class="imgManual" src="assets/image/icon/Calendrier.png" />
+        </div>
+        <div class="row">
+          <div class="col-md-8 col-12 offset-md-2">
+            <input type="text" readonly (click)="d.toggle()" formControlName="date_end_sejour"
+                   class="form-control input_appart" placeholder={{this.location.config_date_fin}}
+                   ngbDatepicker #d="ngbDatepicker" [minDate]="minDate"
+            >
+            <div *ngIf="submitted && this.registerForm.controls['date_end_sejour'].errors" class="div_error text-center">
+              <div *ngIf="this.registerForm.controls['date_end_sejour'].errors.required" >Champs requis</div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="text-center" *ngIf="afficheNotifDanger == false">
+          <button *ngIf="afficheChargement == false" type="submit" class="btn btn-primary">{{this.location.btn_reinitialisation}}</button>
+          <button *ngIf="afficheChargement == true" type="button" class="btn btn-primary opacity">{{this.location.btn_reinitialisation}}</button>
+        </div>
+        <div class="col-md-5" *ngIf="afficheNotifDanger == true"  class="alert alert-danger my-danger" role="alert">
+          {{messageErreur}}
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

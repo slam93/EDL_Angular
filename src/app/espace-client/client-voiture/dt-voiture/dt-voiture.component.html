@@ -1,0 +1,29 @@
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+
+    <thead>
+        <tr>
+            <th (click)="click()">Immatriculation</th>
+            <th>Type</th>
+            <th>Marque</th>
+            <th>Modèle</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        <tr *ngFor="let voiture of ListeVoiture" class=" animate__animated animate__flipInX">
+            <td (click)="proc_edit_car(voiture)">{{voiture.immatriculation}}</td>
+            <td (click)="proc_edit_car(voiture)">{{voiture.type}}</td>
+            <td (click)="proc_edit_car(voiture)">{{voiture.band}}</td>
+            <td (click)="proc_edit_car(voiture)">{{voiture.model}}</td>
+            <td >
+                <button class="btn btn-sm btn-danger grad-delete" (click)="proc_delete_car(voiture.id)" >
+                    <span class="material-icons" style="margin-top: 2px;">delete</span>
+                </button>
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+

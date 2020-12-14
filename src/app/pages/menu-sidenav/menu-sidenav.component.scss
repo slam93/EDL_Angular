@@ -1,0 +1,67 @@
+.imgMenu{
+  height: 40px;
+  width: auto;
+  cursor: pointer;
+}
+.imgMenus{
+  height: 30px;
+  width: auto;
+}
+.divMenu-header{
+  background: url('../../../assets/image/background-menu.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 10px;
+}
+.alignCenter{
+  align-items: center;
+  display: flex!important;
+  justify-content: center;
+}
+.nav-top{
+  padding: 0!important;
+}
+.divmenuLeft{
+  margin-right: 30vw;
+  height: 120px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+.divOverflow{
+  background-color: #0a596a!important;
+  background-blend-mode: soft-light;
+}
+.divmenuRight{
+  margin-left: 30vw;
+  height: 120px;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+.divEtatEntree{
+  background: url('../../../assets/image/accueil.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.divSinalisation{
+  background: url('../../../assets/image/unsplash.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.divEtatSortie{
+  background: url('../../../assets/image/accueil.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}

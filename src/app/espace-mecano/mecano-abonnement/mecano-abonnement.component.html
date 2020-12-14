@@ -1,0 +1,64 @@
+<div class="subscription-container">
+
+    <div *ngIf="showOffre == false"> 
+        <div>
+            <h3> Offre disponible </h3>
+        </div>
+        <br>
+
+        <div class="row"> 
+            <div [ngClass]="{'col-6': true, 'container-cat': true, 'div-disable': containValue1 }" >
+                <app-comp-categorie 
+                    [categorie]="categorie1"
+                    (changeSubscription)="proc_emit_subscription1($event)"
+                ></app-comp-categorie>
+            </div>
+            <div [ngClass]="{'col-6': true, 'container-cat': true, 'div-disable': containValue2 }" >
+                <app-comp-categorie 
+                    [categorie]="categorie2"
+                    (changeSubscription)="proc_emit_subscription2($event)"
+                ></app-comp-categorie>
+            </div>
+            <div [ngClass]="{'col-6': true, 'container-cat': true, 'div-disable': containValuePayement }">
+                <app-payment-stripe-components 
+                    [type]="'Subscription'"
+                    [amount]="amountPrice"
+                    (afterUpdateIntervention)="proc_emit_after_payement($event)" 
+                ></app-payment-stripe-components>
+                <button class="btn btn primary" (click)="proc_retour_liste_abonnement()">Retour</button>
+            </div>
+        </div>
+
+        <!-- <button [ngClass]="{'first': true, 'second': b_var, 'third': true}" > PRIMARY </button> {{ b_var }} -->
+
+        <div class="row" style="margin-left: 0px;">
+            <div >
+                <!-- <button>Precedent</button> -->
+            </div>
+            <div class="div-btn-abonnement">
+                <button class="btn btn-primary" (click)="proc_show_abonnement()">Mes abonnements</button>
+            </div>
+            <div >
+                <!-- <button>Suivant</button> -->
+            </div>
+        </div>
+
+    </div>
+
+    <div *ngIf="showOffre == true">
+        <br>
+        <div class="row">
+            <div class="col-8">
+                <h3> Mes abonnements </h3>
+            </div>
+            <div class="col-4">
+                <button class="btn btn-primary" (click)="proc_show_offre()">Mes offres</button>
+            </div>
+        </div>
+        <br>
+
+        <app-dt-abonnement></app-dt-abonnement>
+        
+    </div>
+
+</div>

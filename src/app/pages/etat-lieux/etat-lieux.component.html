@@ -1,0 +1,66 @@
+<app-menu-sidenav [isOpen]="true"></app-menu-sidenav>
+<div class="container-fluid divcontain">
+  <H4 class="text-uppercase text-center text-titre">{{this.type == 'ENTREE'?
+    this.location.titre_etatArrivee:
+    this.location.titre_etatSortie}}</H4>
+  <p class="text-center text-details">{{this.location.intro_appartement}}</p>
+  <div>
+    <div class="row tr text-uppercase">
+      <div class="col-6">
+        <b>{{this.location.titre_etatSortieColumn1}}</b>
+      </div>
+      <div class="col-6 text-center">
+        <b>{{this.location.titre_etatSortieQuantite}}</b>
+      </div>
+    </div>
+    <div class="div_equips">
+      <div *ngFor="let item of equipement" class="row div_equip">
+        <div class="col-6">
+          {{(this.langue == 'FR'?item.description_FR:item.description_EN)}}
+        </div>
+        <div class="col-6 text-center">
+          {{item.quantity}}
+        </div>
+      </div>
+    </div>
+    <div class="row text-center" style="padding: 30px 0;justify-content: center">
+      <div *ngFor="let item of pieces" class="col-sm-3 col-4">
+        <div class="divPiece" [ngStyle]="{'backgroundColor': pieceSelect.id == item.id ? '#938272' : '#0a596a88' }" (click)="selectPiece(item.id)">
+          {{(this.langue == 'FR'?item.name_FR:item.name_EN)}}{{item.id}}
+        </div>
+        <div *ngFor="let itemSignal of signalisation">
+          <div *ngIf="itemSignal.pieceId == item.id" class="nbrSignalisation">
+            {{itemSignal.incident}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row divBtn">
+      <div class="col-sm-4 offset-sm-2 col-6 offset-0">
+        <div class="btnSignal text-uppercase" (click)="open_siganlisaton()">
+          {{this.location.btnSignale_etatSortie}}
+        </div>
+      </div>
+      <div class="col-sm-4 col-6">
+        <div class="btnValid text-uppercase" (click)="valide()">
+        {{this.location.btnValide_etatSortie}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #childModal let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h5 class="text-uppercase" style="color: #333">{{this.location.titre_signalerProbleme}}</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="close_modal()">
+        <span aria-hidden="true" style="color: #333!important;">&times;</span>
+      </button>
+    </div>
+    <app-signalisation [type]="type"
+                       [user]="user"
+                       [numAppart]="numAppart"
+                       [equipment]="equipement"
+                       [pieceSelect]="pieceSelect"
+                       (signals)="singals($event)"
+    ></app-signalisation>
+  </ng-template>
+</div>

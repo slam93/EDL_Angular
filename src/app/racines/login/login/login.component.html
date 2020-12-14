@@ -1,0 +1,53 @@
+<div class="modal-body modal-connect">
+  <!-- Siple LOGIN -->  
+  <div class="col-md-5" *ngIf="afficheNotifSuccee == true"  class="alert alert-success my-success" role="alert">
+      un nouveau mot de passe PROVISOIRE a ete envoyer  a vore adresse email
+  </div>
+
+  <form  *ngIf="recuperePass == false">
+    <div class="form-group">
+      <input type="email" name="inputEmail" [(ngModel)]="email" (ngModelChange)="verifEmail()" class="form-control" placeholder="email" maxlength="40">
+      <div class="display-error" *ngIf="errorMail">
+        <span>Adresse email invalide</span>
+      </div>
+    </div>
+
+    <div class="form-group form-group-2">
+      <input [type]="InputPassword ? 'password' : 'text'" name="inputPassword" [(ngModel)]="password" class="form-control" placeholder="Mot de passe" maxlength="20">
+      <div class="col-sm-3 third-button-voir">
+        <button class="btn" (click)=toggleInputPassword()> <span class="material-icons">visibility</span></button>
+      </div>
+    </div>
+
+    <div class="form-group form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Se souvenir de moi</label>
+    </div>
+
+    <ng-container *ngIf="afficheNotifDanger == false && afficheChargement == false" >
+      <button type="submit" class="btn btn-primary" (click)="proc_login()">Envoyer</button>
+    </ng-container>
+  
+    <div class="col-md-5" *ngIf="afficheNotifDanger == true"  class="alert alert-danger my-danger" role="alert">
+      {{messageErreur}}
+    </div>
+
+    <div class="col-md-5 my-chargement" *ngIf="afficheChargement == true">
+      <img src="assets/images/Infinity-1s-200px.gif" alt="chargement">
+    </div>
+
+  </form>
+
+<!-- Recuperation mot de passe -->
+    <div *ngIf="recuperePass == true">Veuillez saisir l' adresse email associer au compte</div>
+    <form  *ngIf="recuperePass == true">
+      <div class="form-group">
+      <input type="email" name="inputEmail" [(ngModel)]="email" class="form-control" placeholder="email">
+      </div>
+      
+      <button type="submit" class="btn btn-primary" (click)="proc_pass()">Envoyer le mot de passe </button>
+    </form>
+    <p class="text-right" *ngIf="recuperePass == false"><a href="JavaScript:Void(0);" (click)="show()">J'ai oublié mon mot de passe</a><p>
+    <app-auth-button></app-auth-button>
+    
+</div>

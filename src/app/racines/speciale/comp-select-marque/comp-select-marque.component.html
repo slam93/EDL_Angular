@@ -1,0 +1,12 @@
+<label>Marque</label>
+
+<select class="form-control" name="vehiculeMarque" [(ngModel)]="vehiculeMarque" #marque (change)="onChangeMarque($event, marque)"
+    [attr.disabled]="loadedMarque? true : null" [compareWith]="compareFn">
+    <ng-template ngFor let-marque [ngForOf]="DataMarque">
+        <option [value]="marque.band" [label]="marque.band"></option>
+    </ng-template>
+</select>
+
+<!-- <select class="form-control col-sm-12" [(ngModel)]="scheme" [compareWith]="compareFn">
+    <option *ngFor="let row of schemes" [ngValue]="row" [label]="row.name"></option>
+</select> -->

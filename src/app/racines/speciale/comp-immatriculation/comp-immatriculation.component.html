@@ -1,0 +1,21 @@
+<div class="container-autocomplete">
+    <ng-autocomplete 
+        [data]="data"
+        [searchKeyword]="keyword"
+        [historyListMaxNumber]=1
+        (selected)='selectEvent($event)'
+        (inputChanged)='onChangeSearch($event)'
+        (inputFocused)='onFocused($event)'
+        [itemTemplate]="itemTemplate"
+        [notFoundTemplate]="notFoundTemplate">                                 
+    </ng-autocomplete>
+
+    <ng-template #itemTemplate let-item>
+        <a [innerHTML]="item.immatriculation+' - '+item.model"></a>  
+    </ng-template>
+
+    <ng-template #notFoundTemplate let-notFound>
+    <div [innerHTML]="'Aucun donnée'"></div>
+    </ng-template>
+
+</div>

@@ -1,0 +1,10 @@
+<label>Modèle</label>
+
+<select class="form-control" name="vehiculeModele" [(ngModel)]="vehiculeModele" #modele (change)="onChangeModele($event, modele)" 
+[compareWith]="compareFn" >
+    <ng-template ngFor let-vehicle [ngForOf]="DataModele">
+        <option [value]="vehicle.model" [label]="vehicle.model"></option>
+    </ng-template>
+</select> 
+
+

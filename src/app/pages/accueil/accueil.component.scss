@@ -1,0 +1,49 @@
+.div-accueil{
+  background: #0a596a;
+  height: 100%;
+}
+.div-logo{
+  height: inherit;
+  display: grid;
+  align-content: space-around;
+  justify-content: center;
+  text-align: center;
+}
+.content_three {
+  text-align: -webkit-center;
+  border-radius: 30vh;
+  background: #206779;
+  padding: 15px;
+  margin: 45px
+}
+.content_two {
+  text-align: -webkit-center;
+  border-radius: 30vh;
+  background: #4B8297;
+  padding: 15px;
+  height: 40vh;
+  width: 40vh;
+}
+.content_one{
+  text-align: -webkit-center;
+  border-radius: 30vh;
+  background: #8BABC2;
+  padding: 15px;
+  height: 35vh;
+  width: 35vh;
+}
+.div-img{
+  height: 30vh;
+  width: 30vh;
+  border-radius: 30vh;
+  background:#FFF;
+  padding: 10px;
+}
+img{
+  height: 100%;
+  width: 100%;
+}
+
+.btnMargin{
+  margin: 0 50px;
+}

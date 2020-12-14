@@ -1,0 +1,23 @@
+:host zxing-scanner::ng-deep video {
+  height:100vh;
+  object-fit: cover;
+}
+:host zxing-scanner::ng-deep {
+  width: 100%;
+}
+.divScan{
+  background: #000;
+}
+.divOverlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  align-content: space-around;
+  text-align: center;
+  padding: 30px 20px;
+}
+
+

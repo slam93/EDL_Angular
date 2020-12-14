@@ -1,0 +1,16 @@
+
+<div class="r-payment">
+    <form (ngSubmit)="createStripeToken()" class="checkout">
+        <label for="card-info">Card Info</label>
+    <div id="form-field">
+            <div id="card-info" #cardInfo></div>
+            <button id="submit-button" type="submit">
+                Pay ${{_totalAmount}}
+            </button>
+            <div id="card-errors" role="alert" *ngIf="cardError">
+                <span style="color: #f44336">cancel</span>
+                &nbsp;{{ cardError }}
+            </div>
+        </div>
+    </form>
+</div>

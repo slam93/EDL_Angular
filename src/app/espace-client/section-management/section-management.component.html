@@ -1,0 +1,41 @@
+<ngb-accordion #acc="ngbAccordion" activeIds="config-panel-moteur">
+    <ng-container *ngFor="let item of listSection, let i = index">
+
+        <ngb-panel title="One" class="acc-title" id="config-panel-{{item.description}}">
+            <ng-template ngbPanelHeader let-opened="opened">
+                <div class="card-header" id="headingOne">
+                    <div class="acc-title" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                        aria-controls="collapseOne">
+                        <img src="{{imageSection[i]}}" />
+                        <h4>{{item.description | uppercase}} <button ngbPanelToggle class="btn btn-link p-0">+</button>
+                        </h4>
+                    </div>
+                </div>
+            </ng-template>
+
+            <ng-template ngbPanelContent>
+                <ng-container *ngFor="let itemDiag of item.diagnostic2s">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" name="checkbox-service-{{itemDiag.id}}"
+                            id="checkbox-service-{{itemDiag.id}}" [checked]="itemDiag.check"
+                            (change)="proc_checkService(itemDiag.id)">
+                        <label class="form-check-label" for="checkbox-service-{{itemDiag.id}}">
+                            {{itemDiag.description}}
+                        </label>
+                    </div>
+                </ng-container>
+            </ng-template>
+        </ngb-panel>
+    </ng-container>
+</ngb-accordion>
+
+<div class="form-group form-file">
+    <label>Choisir une autre photo</label>
+    <input type="file" data-buttonText="Your label here." name="problemePhoto2">
+</div>
+<button type="submit" class="btn btn-primary" (click)="pushDiagnostic2ForResult()">Envoyer</button>
+
+<div class="alert alert-danger animate__animated animate__fadeInDown mt-3" role="alert"
+    *ngIf="numberDiagnostic2Checked == true">
+    Veuillez fournir vos diagnostics
+</div>

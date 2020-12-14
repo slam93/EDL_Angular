@@ -1,0 +1,52 @@
+.btn-abonnement {
+    border: 1px;
+    border-radius: 5px;
+    padding: 7px;
+    color: white;
+    font-size: 15px;
+    min-width: 300px;
+    background-color: #7dad46;
+}
+
+
+.container-categorie {
+    background-color: white;
+    margin: auto;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 5px;
+    height: 375px;
+}
+
+
+.categorie-image {
+    background-color: #9c3183;
+    min-height: 120px;
+}
+
+
+.categorie-titre {
+    text-align: center;
+    font-weight: bold;
+    padding: 15px;
+}
+
+.cat-price {
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.cat-description {
+    color: white;
+    text-align: center;
+    padding: 5px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+
+.categorie-description {
+    padding: 10px;
+}

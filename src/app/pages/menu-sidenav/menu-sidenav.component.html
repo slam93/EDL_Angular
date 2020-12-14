@@ -1,0 +1,72 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-2 alignCenter">
+      <img class="imgMenu" (click)="openNav()" src="assets/image/icon/menu.png" />
+    </div>
+    <div class="col-10">
+      <div class="row divMenu-header">
+        <div class="col-6 col-sm-3 alignCenter text-center text-white">
+          Appt {{this.dataAppartement?.numeros}} <br>
+          TYPE {{this.dataAppartement?.type}}
+        </div>
+        <div class="col-6 col-sm-3 alignCenter text-center text-white">
+           VOTRE CAUTION {{this.dataAppartement?.caution}}€
+        </div>
+        <div class="col-0 col-sm-3 text-center text-white d-none d-sm-block">
+          <img class="imgMenus" src="assets/image/icon/listing.png" /><br>
+          Inventaire
+        </div>
+        <div class="col-0 col-sm-3 text-center text-white d-none d-sm-block">
+          <img class="imgMenus" src="assets/image/icon/fragile.png" /><br>
+          Incident
+        </div>
+      </div>
+    </div>
+  </div>
+<!--  menu corps-->
+  <div id="nav" class="nav-top">
+    <div style="display: flex">
+<!--      <div class="col-2 alignCenter">-->
+<!--        <img class="imgMenu" (click)="closeNav()" src="assets/image/icon/menu.png" />-->
+<!--      </div>-->
+      <div class="col-12">
+        <div class="row divMenu-header" style="display: flex">
+          <div class="col-3 text-center text-white">
+            Appt {{this.dataAppartement?.numeros}} <br>
+            TYPE {{this.dataAppartement?.type}}
+          </div>
+          <div class="col-3 text-center text-white">
+            VOTRE CAUTION {{this.dataAppartement?.caution}}€
+          </div>
+          <div class="col-3 text-center text-white ">
+            <img class="imgMenus" src="assets/image/icon/listing.png" /><br>
+            Inventaire
+          </div>
+          <div class="col-3 text-center text-white ">
+            <img class="imgMenus" src="assets/image/icon/fragile.png" /><br>
+            Incident
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12" style="padding: 20px 40px">
+      <p class="text-center">
+        <b style="text-transform: capitalize">{{this.user?.first_name}}, {{this.location.titre_menu}}</b>
+      </p>
+      <br>
+      <p>{{this.location.intro_menu}}</p>
+    </div>
+    <div [ngClass]="isEntrer == true ? 'divmenuLeft divEtatEntree':'divmenuLeft divEtatEntree divOverflow'" (click)="getEtatLieux('ENTREE')">
+      <img class="imgMenu" src="assets/image/icon/check-in.png" />
+      <span class="text-white text-uppercase" style="padding-left: 10px">{{this.location.titre_etatArrivee}}</span>
+    </div>
+  <div class="divmenuRight divSinalisation" (click)="getEtatLieux('SIGNALISATION')">
+      <img class="imgMenu" src="assets/image/icon/fragile.png" />
+      <span class="text-white text-uppercase" style="padding-left: 10px">{{this.location.signaler_menu}}</span>
+    </div>
+    <div class="divmenuLeft divEtatSortie" (click)="getEtatLieux('SORTIE')">
+      <img class="imgMenu" src="assets/image/icon/check-out.png" />
+      <span class="text-white text-uppercase" style="padding-left: 10px">{{this.location.titre_etatSortie}}</span>
+    </div>
+  </div>
+</div>

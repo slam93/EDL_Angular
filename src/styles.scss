@@ -1,0 +1,190 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~material-design-icons/iconfont/material-icons.css';
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+
+/* CSS 2 Config bootstrap */
+@import "assets/r-base.css";
+
+
+/* CSS 1 Config bootstrap */
+@import "assets/t-base.css";
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.cursor-pt {
+    cursor: pointer;
+}
+
+.cursor-cl {
+    cursor: cell;
+}
+
+.modal-dialog {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-y: auto;
+  min-height: calc(100vh - 60px);
+}
+@media (max-width: 767px) {
+  .modal-dialog {
+    min-height: calc(100vh - 20px);
+  }
+}
+.modal-content{padding: 10px 20px}
+.my-modal-xs .modal-content{background-color: #0a596a!important;}
+body .btn-primary {transition:0.25s;padding: 10px 40px;background:#938272;border:none;border-radius:10px;color:#fff;font-weight: bold;}
+body .btn-primary:focus {background:#938272!important;border:none!important;}
+body .btn-primary:hover {background:#938272!important;border:none!important;}
+body .btn-primary:active {background:#938272!important;border:none!important;}
+body .modal-header h5 {text-align: center;width: 100%;padding: 0 0 35px;font-size: 20px;max-width:800px;margin: 0 auto;color:#FFF;font-weight: bold;}
+body .modal-header .close {position: absolute; right: 20px; color: #FFF!important;text-shadow: none!important;opacity: 1;}
+body .modal-header .close span {color: #FFF}
+form .form-control:focus {background: #FFF;box-shadow: 0 0 10px #E0AC8B;}
+form .form-control, .container-autocomplete input.ng-untouched.ng-pristine.ng-valid, .container-autocomplete input.ng-pristine.ng-valid.ng-touched, .container-autocomplete input.ng-valid.ng-dirty.ng-touched { background: #FFF; border: none ; border-radius: 10px;padding: 1.475rem 1.3rem;}
+.div_error{color: red;padding: 5px;}
+.btn-primary.opacity{opacity: 0.5;cursor: not-allowed!important;}
+.my-danger{}
+form button{margin-top: 15px}
+.imgScan{
+  height: 25vh;
+  width: auto;
+}
+.imgManual{
+  height: 5vh;
+  width: auto;
+}
+.text-click{
+  text-decoration-line: underline;
+  cursor: pointer;
+  color:dodgerblue;
+}
+.form-control.input_appart{
+  border-bottom: 1px solid #938272;
+  border-radius: 0!important;
+  text-align: center;
+}
+.form-control.input_appart:focus{
+  box-shadow: none!important;
+}
+.text-titre{
+  margin-top: 10px;
+  color: #938272;
+}
+.form-control.input-signalisation{
+  border: none;
+  border-bottom: 1px solid #938272;
+  border-radius: 0px;
+  padding-left: 50px;
+  margin-top: 30px;
+}
+.form-control.input-signalisation:focus{
+  border: none;
+  box-shadow: none!important;
+  border-bottom: 1px solid #938272;
+}
+.form-control.input-signalisation:active{
+  border: none;
+  box-shadow: none!important;
+  border-bottom: 1px solid #938272;
+}
+.imgInput{
+  position: absolute;
+  width: 35px;
+  height: auto;
+}
+.imgInputSelect{
+  position: absolute;
+  width: 30px;
+  height: auto;
+}
+.nbrSignalisation{
+  background: #0a596a;
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -15px;
+  color: #FFF;
+}
+.text-details{
+  padding:20px 0;
+}
+.tr{
+  color: #938272;
+  border-bottom: 1px solid #938272;
+  margin-bottom: 20px;
+}
+.div_equip{
+  padding-bottom: 5px;
+}
+.div_equips{
+  max-height: 40vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.divPiece{
+  cursor: pointer;
+  border-radius: 20px;
+  padding: 7px;
+  text-align: center;
+  color: #FFF;
+}
+.btnSignal{
+  background: #0a596a;
+  padding: 10px;
+  text-align: center;
+  color: #FFF;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.btnValid{
+  cursor: pointer;
+  background: #938272;
+  padding: 10px;
+  text-align: center;
+  color: #FFF;
+  border-radius: 20px;
+}
+.divBtn{
+  display: flex;
+  align-items: center;
+}
+.tdSignal{
+  padding: 0 10px;padding-bottom:5px
+}
+.imgDelete{
+  width: 20px;
+  height: auto;
+  cursor: pointer;
+}
+signature-pad canvas{
+  border: 1px solid;
+  border-radius: 20px;
+}
+.imgRubber{
+  width: 30px;
+  height: auto;
+  cursor: pointer;
+}
+.justifycenter{
+  justify-content: center
+}
+.divcontain{
+  padding-bottom: 20px;
+  padding-top: 10px;
+}
+.example-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}

@@ -1,0 +1,194 @@
+<section>
+
+	<div>
+		<h3> Mon agenda </h3>
+	</div>
+    <br>
+
+    <!-- Presentation du mechanic selectionner  -->
+    <div class="row mecano-presentation">
+        <div class="col-3">
+            <img src="{{connectedImageGarage}}" id="image-mecano" />
+        </div>
+        <div class="row col-9">
+            <div class="col-6">
+                <div><b>{{mecanoActual?.name}}</b></div>
+                <div><span class="material-icons">place</span>{{mecanoActual?.address}}</div>
+                <div> <button class="btn btn-primary">Mecano</button> </div>
+            </div>
+            <div class="col-6">
+                <div>{{mecanoActual?.user?.first_name}} {{mecanoActual?.user?.last_name}}</div>
+                <div>
+                    Ouverture : {{mecanoActual?.hourOpen}} 
+                    <button class="btn btn-sm btn-danger grad-view">
+                        <span class="material-icons" style="margin-top: 2px;">create</span>
+                    </button>
+                </div>
+                <div>
+                    Fermeture  : {{mecanoActual?.hourClose}}
+                    <button class="btn btn-sm btn-danger grad-view">
+                        <span class="material-icons" style="margin-top: 2px;">create</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br/>
+
+    <!-- Presentation de notre container de travail   -->
+    
+
+    <div class="mecano-presentation">
+    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+
+        <li [ngbNavItem]="1">
+            <a ngbNavLink> Agenda </a>
+            <ng-template ngbNavContent>
+                <div class="row">
+                <div class="row col-7" style="margin-left: 5px;">
+                    <div id="div-agenda">
+                        <p> 
+                            Date : {{dateShow | date: 'dd MMM yyyy'}} 
+                            <button class="btn btn-sm btn-danger grad-view">
+                                <span class="material-icons" style="margin-top: 2px;">insert_invitation</span>
+                            </button>
+                        </p>
+                        
+                        <app-comp-calendar 
+                            [dateStart]="dateStart"
+                            [dateEnd]="dateEnd"
+                            [hourOpen]="hourOpen"
+                            [hourClose]="hourClose"
+                            [listInterventionAgenda]="listeInterventionMecano"
+                            (changeIntervention)="proc_change_intervention($event)"
+                        ></app-comp-calendar>
+                    </div>
+                </div>
+                
+                <div class="col-5">
+                    <div *ngIf="emitedIntervention === 0">
+                        <div class="intervention-nothing">
+
+                            <div class="intervention-head">
+                                Intervention
+                            </div>
+                            <div class="intervention-body">
+                                <div style="margin: auto; width: max-content;">
+                                    <span 
+                                        class="material-icons" 
+                                        style="margin-top: 2px;font-size: 30px;margin-top: 30px;margin-bottom: 30px;">
+                                    error
+                                    </span>
+                                </div>
+                                <div>
+                                    Aucun intervention sélectionner !
+                                </div>
+                            </div>
+                        </div>
+                            
+                    </div>
+                    <div *ngIf="emitedIntervention !== 0">
+
+                        <div class="intervention-nothing">
+                            <div class="intervention-head">
+                                Intervention
+                            </div>
+                            <div class="intervention-body">
+
+                                <div class="detail-section">
+                                    <div class="detail-titre">Véhicule</div>
+                                    <div style="text-align: center;">{{ selectedIntervention?.vehicle?.type }} - {{ selectedIntervention?.vehicle?.model }}</div>
+                                    <div>
+                                        <p><span class="material-icons">wb_incandescent</span> Probleme bien définie </p>
+                                    </div>
+                                    <div class="row"  style="margin: auto; width: max-content;">
+                                        <div class="col-6">
+                                            <button class="btn-date" style="background-color: #7dad46; color: white;"> {{ selectedBeginInterv | date: 'dd MMM yyyy à H:mm' }} </button>
+                                        </div>
+                                        <div class="col-6">
+                                            <button class="btn-date" style="background-color: #da6450; color: white;">{{ selectedEndInterv | date: 'dd MMM yyyy à H:mm' }}</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="detail-section">
+                                    <div class="detail-titre">Problème</div>
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <div *ngIf="selectedIntervention?.problemPhoto !== 'undefined'">
+                                                {{ selectedIntervention.problemPhoto }}
+                                            </div>
+                                            <div *ngIf="selectedIntervention?.problemPhoto === 'undefined'" style="padding: 5px;">
+                                                <span class="material-icons icon-theme">report_problem</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-8"> {{ selectedIntervention.problemDescription }} </div>
+                                    </div>
+                                    <div class="row">
+                                        <a href="javascript:void(0)" class="btn btn-primary" (click)="changeDeChat(selectedIntervention.id)" >
+                                            <span class="notifs">6</span> 
+                                            Discuter avec ce client
+                                        </a>
+                                    </div>
+                                    <hr>
+                                    <div style="text-align: center;">
+                                        <span class="material-icons">room</span> {{ selectedIntervention.address }} 
+                                    </div>
+                                </div>
+
+
+                                <div class="detail-section">
+                                    <div class="row detail-titre" style="margin-left: 0px; margin-right: 0px;">
+                                        <div class="col-4">Payement</div>
+                                        <div class="col-8" style="text-align: right;margin-bottom: -5px;"> 
+                                            <span *ngIf="selectedIntervention?.statePayment == 'EFFECTUE'" class="material-icons icon-theme-3">check_circle</span> 
+                                            <span *ngIf="selectedIntervention?.statePayment == 'EN ATTENTE'" class="material-icons icon-theme-2">cancel</span>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+            </ng-template>
+        </li>
+
+        <li [ngbNavItem]="2">
+            <a ngbNavLink> Intervention <span class="badge badge-danger">{{ sizeIntervention }}</span></a>
+            <ng-template ngbNavContent>
+                <div>
+                    <app-dt-historique 
+                        [ListeHistorique]="listeInterventionMecano"
+                        [type]="'byMechanic'"
+                        (afterDetailIntervention)="proc_emit_detailIntervention($event)"
+                    ></app-dt-historique>
+    
+                </div>
+            </ng-template>
+        </li>
+
+        <li [ngbNavItem]="3">
+            <a ngbNavLink> A savoir </a>
+            <ng-template ngbNavContent>
+                
+            </ng-template>
+        </li>
+
+        </ul>
+        
+        <div [ngbNavOutlet]="nav" class="mt-2"></div>
+
+    </div>
+        
+        <!-- <pre>Active: {{ active }}</pre> -->
+
+
+    
+
+
+</section>

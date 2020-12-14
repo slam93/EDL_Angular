@@ -1,0 +1,42 @@
+<table datatable class="row-border hover" [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+    <thead>
+        <tr>
+            <th>Utilisateurs</th>
+            <th>Abonnement</th>
+            <th>Type</th>
+            <th>Prix</th>
+            <th>Date début</th>
+            <th>Date d'échéance</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of listSubscriptions, let i = index" (click)="emitList(item)"
+            class=" animate__animated animate__flipInX cursor-cl">
+            <td>
+                <span *ngIf="checkDate[i] === true" class="text-danger">{{item.user.username}}</span>
+                <span *ngIf="checkDate[i] === false">{{item.user.username}}</span>
+            </td>
+            <td>
+                <span *ngIf="checkDate[i] === true" class="text-danger">{{item.category.description}}</span>
+                <span *ngIf="checkDate[i] === false">{{item.category.description}}</span>
+
+            </td>
+            <td>
+                <span *ngIf="checkDate[i] === true" class="text-danger">{{item.category.typeCategories}}</span>
+                <span *ngIf="checkDate[i] === false">{{item.category.typeCategories}}</span>
+            </td>
+            <td>
+                <span *ngIf="checkDate[i] === true" class="text-danger">{{item.category.price}} €</span>
+                <span *ngIf="checkDate[i] === false">{{item.category.price}} €</span>
+            </td>
+            <td>
+                <span *ngIf="checkDate[i] === true" class="text-danger">{{item.dateBegin | date: 'dd MMMM yyyy'}}</span>
+                <span *ngIf="checkDate[i] === false">{{item.dateBegin | date: 'dd MMMM yyyy'}}</span>
+            </td>
+            <td>
+                <span *ngIf="checkDate[i] === true" class="text-danger">{{item.dateEnd | date: 'dd MMMM yyyy'}}</span>
+                <span *ngIf="checkDate[i] === false">{{item.dateEnd | date: 'dd MMMM yyyy'}}</span>
+            </td>
+        </tr>
+    </tbody>
+</table>

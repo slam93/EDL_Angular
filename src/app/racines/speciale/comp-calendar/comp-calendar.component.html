@@ -1,0 +1,27 @@
+<!-- <div>
+    Date debut : {{ dateStart | date: 'dd MMM yyyy' }}
+    Date Fin : {{ dateEnd | date: 'dd MMM yyyy' }}
+</div> -->
+
+
+<div class="col-md calendar-list">
+    <div class="cal-nav">
+        <a class="prev" (click)="proc_decrement_date()"><span class="material-icons">chevron_left</span></a>
+        <a class="next" (click)="proc_increment_date()"><span class="material-icons">chevron_right</span></a>
+    </div>
+    <ng-container *ngFor="let dayIntervention of listDayIntervention">
+        <div class="cal-day">
+            <h5>{{dayIntervention.day | date: 'EEEE dd MMM yyyy' | titlecase }}</h5>
+            <ng-container *ngFor="let interven of dayIntervention.intervention">
+                <a 
+                    *ngIf="interven.disponible == false" 
+                    data-toggle="modal" 
+                    data-target="#modal-garage-detail" 
+                    (click)="proc_show_intervention(dayIntervention, interven)"
+                >{{interven.heure}}</a>
+                <span *ngIf="interven.disponible == true" (click)="proc_show_intervention(interven.id, interven)">----</span>
+            </ng-container>
+            
+        </div>
+    </ng-container>
+</div>

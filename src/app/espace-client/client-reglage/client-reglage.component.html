@@ -1,0 +1,179 @@
+<h3> Réglage utilisateur </h3>
+{{selectRole}}
+<hr/>
+
+<!-- Presentation image profile -->
+
+    <h5> Information profil </h5>
+    <form *ngIf="profileForm" [formGroup]="profileForm"  (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="r-presentation-photo" >
+                    <img src="{{connectedImage}}"/>
+                </div>
+
+                <!-- <div>
+                    <input type="file" id="logo"   placeholder="logo" (change)="handleFileInput($event.target.files)" class="form-control">
+                </div> -->
+
+                <app-comp-image-cropper 
+                    (changeCropped)="proc_emit_cropped($event)"
+                ></app-comp-image-cropper>
+
+            </div>
+
+            <div class="col-lg-6 col-md-12 col-sm-12">
+
+                    <div>
+                        <label for="firstName">Nom</label>
+                        <input type="text" class="form-control" formControlName="firstName" placeholder="" value="" >
+                    </div>
+
+                    <div>
+                        <label for="lastName">Prénom</label>
+                        <input type="text" class="form-control" formControlName="lastName" placeholder="" value="" >
+                    </div>    
+                    
+                    <div>
+                        <label for="userName">Surnom</label>
+                        <input type="text" class="form-control" formControlName="userName" placeholder="" value="" >
+                    </div>
+
+                    <div>
+            
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" formControlName="email" placeholder="" value="" >
+            
+                        <!-- <label>Role </label>
+                        <select class="form-control"  formControlName="roleUser" [(ngModel)]="roleUser" #role (change)="onChangeRole($event, role)">
+                            <ng-template ngFor let-role [ngForOf]="enumRole">
+                                <option [value]="role.valeur" >{{role.valeur}}</option>
+                            </ng-template>
+                        </select> -->
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" formControlName="enabled">
+                        <label class="form-check-label" for="enabled">
+                            Activation compte
+                        </label>
+                    </div>
+            </div>
+
+        </div>
+
+        <div class="inline" *ngIf="afficheNotifSuccee == false && afficheNotifFailed == false">
+            <button type="submit" class="btn btn-primary" [disabled]="!profileForm.valid">Modifier</button> 
+            <button type="button" class="btn btn-primary">Annuler</button>
+        </div>
+    
+        <div class="col-md-5" *ngIf="afficheNotifSuccee == true"  class="alert alert-success my-success" role="alert">
+            Modification avec succées
+        </div>
+        
+        <div class="col-md-5" *ngIf="afficheNotifFailed == true"  class="alert alert-danger my-success" role="alert">
+            Modification erreur ...
+        </div>
+
+    </form>
+
+
+
+
+<hr>
+
+<div>
+    <h5> Gestion mot de passe </h5>
+    <form *ngIf="profileFormPassword" [formGroup]="profileFormPassword" (ngSubmit)="onSubmitPassword()">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <label for="userName"></label>
+                <input type="password" class="form-control" formControlName="password" placeholder="Mot de passe" value="" >
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <label for="roleUser"></label>
+                <input type="password" class="form-control" formControlName="verifPassword" placeholder="Entrer de nouveau votre mot de passe" value="" >
+            </div>    
+        </div>
+
+        <div class="inline" *ngIf="afficheNotifSucceeP == false && afficheNotifFailedP == false">
+            <button type="submit" class="btn btn-primary" [disabled]="!profileFormPassword.valid">Modifier</button> 
+            <button type="button" class="btn btn-primary">Annuler</button>
+        </div>
+
+        <div class="col-md-5" *ngIf="afficheNotifSucceeP == true"  class="alert alert-success my-success" role="alert">
+            Modification avec succées
+        </div>
+        
+        <div class="col-md-5" *ngIf="afficheNotifFailedP == true"  class="alert alert-danger my-success" role="alert">
+            Modification erreur ...
+        </div>
+
+    </form>
+</div>
+
+
+<div *ngIf="selectRole=='MECANO'" >
+<hr>
+
+<h5> Information Garage </h5>
+    <form *ngIf="profileForm" [formGroup]="garageForm"  (ngSubmit)="onGarageSubmit()">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="r-presentation-photo" >
+                    <img src="{{connectedImageGarage}}"/>
+                </div>
+
+                <app-comp-image-cropper 
+                    (changeCropped)="proc_emit_garage_cropped($event)"
+                ></app-comp-image-cropper>
+            </div>
+
+            <div class="col-lg-6 col-md-12 col-sm-12">
+
+                    <div>
+                        <label for="garageName">Nom</label>
+                        <input type="text" class="form-control" formControlName="garageName" placeholder="" value="" >
+                    </div>
+
+                    <div>
+                        <label for="garageAddress">Adresse</label>
+                        <input type="text" class="form-control" formControlName="garageAddress" placeholder="" value="" >
+                    </div>    
+
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="garageOpen">Ouverture</label>
+                            <input type="text" class="form-control" formControlName="garageOpen" placeholder="" value="" >
+                        </div>
+                        <div class="col-6">
+                            <label for="garageClose">Fermeture</label>
+                            <input type="text" class="form-control" formControlName="garageClose" placeholder="" value="" >
+                        </div>
+                    </div>
+            </div>
+        </div>
+
+        <div class="inline">
+            <button type="submit" class="btn btn-primary" [disabled]="!garageForm.valid">Modifier</button> 
+            <button type="button" class="btn btn-primary">Annuler</button>
+        </div>
+    
+        <div class="col-md-5" *ngIf="afficheNotifSuccee == true"  class="alert alert-success my-success" role="alert">
+            Modification avec succées
+        </div>
+        
+        <div class="col-md-5" *ngIf="afficheNotifFailed == true"  class="alert alert-danger my-success" role="alert">
+            Modification erreur ...
+        </div>
+
+    </form>
+
+</div>
+
+<hr>
+
+<app-comp-donation></app-comp-donation>
+
+
+

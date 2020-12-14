@@ -1,0 +1,101 @@
+<section style="padding: 5px;">
+
+<div>
+    <h3 class="d-inline"> Mes voitures</h3>
+    <button type="button" class=" btn btn-primary d-inline float-right" (click)="create_open_md(cars)">
+      Nouveau
+    </button>
+
+</div>
+
+<br>
+
+  <app-dt-voiture 
+    [changeLoad]="changeLoad" 
+    (afterDelete)="proc_delete_car($event)" 
+    (afterEdit)="proc_emit_edit_car($event)"
+  ></app-dt-voiture>
+
+  <!---Pop up : Suppression car --->
+  <ng-template #deleteCars id="modal-deleteCars" let-c="close" let-d="dismiss">
+    <app-message-prompt 
+      [title]="titleDelete"
+      [message]="messageDelete"
+      (yes)="proc_emit_delete_yes($event)"
+      (no)="proc_emit_delete_no($event)"
+      (mclose)="proc_emit_delete_mclose($event)"
+    ></app-message-prompt>
+  </ng-template>
+
+  <!---Pop up : Add |  Edition cars  --->
+	<ng-template #cars id="modal-cars" let-c="close" let-d="dismiss">
+		<div class="modal-header">
+
+      <h5 *ngIf="optionAction == 'add'">Nouvelle voiture</h5>
+      <h5 *ngIf="optionAction == 'edit'">Edition voiture</h5>
+
+			<!-- (click)="d('Cross click')" -->
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="proc_close()">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+
+    <div class="modal-body modal-connect">
+      <div>
+          <div class="form-group">
+            <form >
+              <label>Entrer votre numéro de plaque</label>
+              <input class="form-control" type="text" name="vehiculeImmatriculation" [(ngModel)]="vehiculeImmatriculation">
+            </form>
+          </div>
+
+          <div class="form-group">
+            <form [formGroup]="formType">
+
+              <label>Type</label>
+              <select class="form-control" name="vehiculeType" [(ngModel)]="vehiculeType" #type (change)="onChangeType($event, type)" >
+                  <ng-template ngFor let-vehiculeType [ngForOf]="DataType">
+                      <option [value]="vehiculeType.description" [label]="vehiculeType.description"></option>
+                  </ng-template>
+              </select> 
+
+            </form>
+          </div>
+
+          <div class="form-group">
+            <form [formGroup]="formMarque">
+
+              <app-comp-select-marque 
+                (changeMarque)="proc_emit_change_marque($event)"
+              ></app-comp-select-marque>
+
+            </form>
+          </div>
+
+          <div class="form-group">
+            <form [formGroup]="formModele">
+
+              <app-comp-select-modele 
+                [listeFilterModel]="listeFilterModel"
+                (changeModele)="proc_emit_change_modele($event)"
+              ></app-comp-select-modele>
+
+            </form>
+          </div>
+
+
+          <div class="inline">
+            <button *ngIf="optionAction == 'add'" class="btn btn-sm btn-primary" (click)="proc_save_cars()">Valider</button>
+            <button *ngIf="optionAction == 'edit'" class="btn btn-sm btn-primary" (click)="proc_edit_cars()">Valider</button>
+
+            <button class="btn btn-sm btn-primary">
+              Annuler
+            </button>
+          </div>
+
+      </div>
+    </div>
+
+	</ng-template>
+
+</section>

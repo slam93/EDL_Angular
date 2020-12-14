@@ -1,0 +1,64 @@
+<div class="container divcontain">
+  <H4 class="text-uppercase text-center text-titre">{{this.type == 'ENTREE'?
+    this.location.titre_etatArrivee:
+    this.location.titre_etatSortie}}</H4>
+  <p class="text-center text-details">{{this.location.intro_etatArrivee}}</p>
+  <div class="row tr text-uppercase">
+    <div class="col-4">
+      <b>{{this.location.titre_etatSortieColumn1}}</b>
+    </div>
+    <div class="col-3 text-center">
+      <b>{{this.location.titre_etatSortieQuantite}}</b>
+    </div>
+    <div class="col-3 text-center">
+      <b>{{this.location.titre_etatArriveeEtat}}</b>
+    </div>
+  </div>
+  <div>
+    <div *ngFor="let item of pieces" class="div_equip" style="padding-bottom: 10px">
+      <div class="row">
+        <div class="col-7">
+          <b>{{(this.langue == 'FR'?item.name_FR:item.name_EN)}}</b>
+        </div>
+        <div class="col-3 text-center">
+          <b *ngIf="signalisationExist(item.id) == undefined">OK</b>
+        </div>
+      </div>
+      <div *ngFor="let itemSignal of signalisation">
+        <div *ngIf="itemSignal.pieceId == item.id" class="row tdSignal">
+          <div class="col-4">
+            {{(this.langue == 'FR'?itemSignal.equipment.description_FR:itemSignal.equipment.description_EN)}}
+          </div>
+          <div class="col-3 text-center">
+            {{ itemSignal.quantity }}
+          </div>
+          <div class="col-3 text-center">
+            {{ itemSignal.etat }}
+          </div>
+          <div class="col-2 text-center" (click)="deleteSignal(itemSignal.id)">
+            <img class="imgDelete" src="assets/image/icon/delete.png" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="divSignature">
+    <p class="text-center">{{this.location.signatureCertifier}}</p>
+    <div class="row justifycenter">
+      <signature-pad #signaturePad [options]="options" (onEndEvent)="drawComplete()"></signature-pad>
+    </div>
+    <p *ngIf="errorSignature" class="text-center div_error">Veuillez mettre votre signature</p>
+    <div class="row justifycenter">
+      <div class="btnEfface" (click)="clearSignature()">
+        Effacer
+      </div>
+    </div>
+  </div>
+  <div class="row justifycenter">
+    <div class="col-8 col-sm-6">
+      <div class="btnSignal text-uppercase" (click)="postCertification()">
+        {{this.location.btnCertifier}}
+      </div>
+    </div>
+  </div>
+</div>

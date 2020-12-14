@@ -1,0 +1,30 @@
+
+<div class="container-categorie">
+
+    <div class="categorie-titre">
+        {{ categorie?.description }}
+    </div>
+
+    <div class="categorie-image">
+        <div class="cat-price">
+            <span> {{ categorie?.price }}€ </span> <span *ngIf="categorie?.price == 0">(gratuit)</span>
+        </div>
+        <div class="cat-description" *ngIf="categorie?.price == 0">
+            Free
+        </div>
+    </div>
+
+    <div class="categorie-description">
+        Cette est disponible pendant 1 mois , après vous passez sur Premium
+        <div>
+            <div><span>V</span> Tout fonctionnalité proposer</div>
+            <div><span>V</span> Assistance technique offerte</div>
+            <div><span>V</span> Disponibilité 24h/24</div>
+        </div>
+    </div>
+
+    <div style="text-align: center;">
+        <button class="btn-abonnement" (click)="proc_decourvrir_abonnement(categorie)" > Decouvrir cette offre  </button>
+    </div>
+
+</div>

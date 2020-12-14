@@ -1,0 +1,476 @@
+<div class="home">
+
+	<div id="main" class="animate__animated animate__fadeInLeft">
+		<header>
+			<button class="openbtn" (click)="openNav()">☰</button>
+
+			<div id="nav" class="container nav-top">
+				<div class="row">
+					<div class="col-md">
+						<a class="closebtn" (click)="closeNav()">×</a>
+						<p>Déjà inscrit ? <a (click)="open_md(connect)" class="btn btn-primary" data-toggle="modal"
+								data-target="#modal-connect">Se connecter</a></p>
+					</div>
+					<div class="col-md">
+						<a class="btn btn-primary" data-toggle="modal" data-target="#modal-suscribe"
+							(click)="open_md_client_suscribe()">Espace client</a>
+						<a class="btn btn-primary" data-toggle="modal" data-target="#modal-suscribe"
+							(click)="open_md_mecano_suscribe()">Espace mecano</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="container logo">
+				<a><img src="assets/images/logo.png" (click)="proc_clickImage()" /></a>
+			</div>
+			<div class="container">
+				<div class="row">
+					<div class="col-md top-list">
+						<ul>
+							<li><a data-toggle="modal" data-target="#modal-option-1" (click)="open_lg(option1)">Je
+									souhaite de l'aide, je ne sais pas ce qu'a ma voiture <span
+										class="material-icons">arrow_forward</span></a></li>
+							<li><a data-toggle="modal" data-target="#modal-option-2" (click)="open_lg_option2()">Je sais
+									ce qu'a ma voiture, je choisis mon prestataire <span
+										class="material-icons">arrow_forward</span></a></li>
+							<li><a data-toggle="modal" data-target="#modal-suscribe" (click)="open_md(suscribe)">Je suis
+									prestataire auto, je m'inscris à G&C <span
+										class="material-icons">arrow_forward</span></a></li>
+						</ul>
+					</div>
+					<div class="col-md top-img">
+						<img src="assets/images/garage-illustration.png" />
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<section class="text-center prestations">
+			<div class="container">
+				<h1>G&C va plus loin et vous propose des prestataires</h1>
+				<ul>
+					<li>
+						<a>
+							<img src="assets/images/icon1.png" />
+							<h3>Contrôle technique</h3>
+						</a>
+					</li>
+					<li>
+						<a>
+							<img src="assets/images/icon2.png" />
+							<h3>Dépannage</h3>
+						</a>
+					</li>
+					<li>
+						<a>
+							<img src="assets/images/icon3.png" />
+							<h3>Parebrise</h3>
+						</a>
+					</li>
+					<li>
+						<a>
+							<img src="assets/images/icon4.png" />
+							<h3>Nettoyage en profondeur intérieur</h3>
+						</a>
+					</li>
+					<li>
+						<a>
+							<img src="assets/images/icon5.png" />
+							<h3>Carte grise</h3>
+						</a>
+					</li>
+					<li>
+						<a>
+							<img src="assets/images/icon6.png" />
+							<h3>Faire vendre ma voiture</h3>
+						</a>
+					</li>
+					<li>
+						<a>
+							<img src="assets/images/icon7.png" />
+							<h3>Faire acheter ma voiture</h3>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</section>
+		<section class="fonction">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 order-md-12">
+						<h2>Comment ça marche</h2>
+						<p>Notre objectif est de faciliter à nos client-e-s l'accès à des services de mécanique auto et
+							d'achat-vente de qualité au meilleur prix sans se prendre la tête. Laissez nous votre
+							problématique en message en bas de cette page ou réserver directement via le bouton en haut
+							de la page pour passer à une autre dimension de la réparation auto.</p>
+						<ul>
+							<li><span class="material-icons">done</span> J’ai ma pièce auto</li>
+							<li><span class="material-icons">build</span> je réserve un professionnel</li>
+							<li><span class="material-icons">date_range</span> Choisissez la date et l'heure</li>
+							<li><span class="material-icons">touch_app</span> Confirmez votre demande</li>
+						</ul>
+					</div>
+					<div class="col-md-6 order-md-1"><img src="assets/images/capture-phone.png" /></div>
+				</div>
+			</div>
+		</section>
+		<section class="contact">
+			<div class="container">
+				<h2>Besoin d'aide?<br />Envoyer nous un message</h2>
+				<form>
+					<div class="form-group">
+						<label>Nom *</label>
+						<input class="form-control" type="text">
+					</div>
+					<div class="form-group">
+						<label>Prénom *</label>
+						<input type="text" class="form-control">
+					</div>
+					<div class="form-group">
+						<label>Email *</label>
+						<input type="email" class="form-control">
+					</div>
+					<div class="form-group">
+						<label>Message *</label>
+						<textarea class="form-control"></textarea>
+					</div>
+					<button type="submit" class="btn btn-primary">Envoyer</button>
+				</form>
+			</div>
+		</section>
+		<footer>
+			<div class="container newsletter">
+				<form>
+					<div class="form-row">
+						<div class="col-md-5">
+							Recevez nos news par email
+						</div>
+						<div class="form-group col-md-7">
+							<input type="email" placeholder="Votre adresse email" class="form-control">
+							<button type="submit" class="btn btn-primary">S'inscrire</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="footer-infos">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg">
+							<a><img src="assets/images/logo.png" /></a>
+							<p>Vous êtes mécaniciens et souhaitez rejoindre l'aventure FlexnCars, laissez nous vos
+								coordonnées. N'hésitez pas à nous contacter, nous serons ravis de vous aider.</p>
+						</div>
+						<div class="col-lg">
+							<ul>
+								<li><span class="material-icons">room</span> 92 rue Henri ghesquiere app1</li>
+								<li><a href="tel:06 18 64 48 69"><span class="material-icons">call</span> 06 18 64 48
+										69</a></li>
+								<li><a href="mailto:hazaoui@icloud.com"><span class="material-icons">email</span>
+										hazaoui@icloud.com</a></li>
+							</ul>
+						</div>
+						<div class="col-lg">
+							<ul>
+								<li><a>CGU / CGV</a></li>
+								<li><a>Politique de confidentialité</a></li>
+								<li><a>Mentions légales</a></li>
+							</ul>
+						</div>
+					</div>
+					<p class="text-center copyright">Copyright © 2020 | Tous droits réservé</p>
+				</div>
+			</div>
+		</footer>
+
+	</div>
+
+
+	<!---Pop up Connection--->
+	<ng-template #connect id="modal-connect" let-c="close" let-d="dismiss">
+		<div class="modal-header">
+			<h5>Identifiez-vous pour continuer et obtenir votre tarif immédiatement</h5>
+			<!-- (click)="d('Cross click')" -->
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close"   >
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<app-login (close)="onClose($event)"></app-login>
+	</ng-template>
+
+
+	<!---Pop up inscription--->
+	<ng-template #suscribe id="modal-suscribe" let-c="close" let-d="dismiss">
+
+		<div class="modal-header">
+			<h5>Inscrivez-vous en quelques clics </h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="d('Cross click')">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+
+		<app-inscription (vaiderInscription)="proc_inscriptionValide()"></app-inscription>
+
+	</ng-template>
+
+	<!---Pop up option1: je ne sais pas ce qu'a ma voiture--->
+	<ng-template #option1 id="modal-option-1" let-c="close" let-d="dismiss">
+		<div class="modal-header">
+			<h5>Obtenez votre devis gratuit immédiatement et Réservez votre rendez-vous en ligne</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="d('Cross click')">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="modal-body modal-option-1">
+
+			<ul class="nav nav-tabs row">
+				<ng-template ngFor let-diagnostic1 [ngForOf]="DataDiagnostic1">
+					<li class="col-6"><a data-toggle="tab" (click)="click_spet1(diagnostic1.id)"><span
+								class="material-icons">{{ diagnostic1.icone }}</span> {{ diagnostic1.description }}</a>
+					</li>
+				</ng-template>
+			</ul>
+
+			<div class="tab-content" *ngIf="showStep1 == true && showLogin == false">
+				<div id="home">
+					<div class="row">
+						<div class="col-md-6">
+							<form>
+								<h6>Veuillez décrire le problème</h6>
+								<div class="form-group">
+									<textarea class="form-control" name="problemeDescription"
+										[(ngModel)]="problemeDescription"></textarea>
+								</div>
+								<div class="form-group form-file">
+									<label>Choisir une autre photo</label>
+									<input type="file" data-buttonText="Your label here." name="problemePhoto"
+										[(ngModel)]="problemePhoto">
+								</div>
+								<button *ngIf="showErreurStep1 == false" type="submit" class="btn btn-primary"
+									(click)="click_showSpet2()">Envoyer</button>
+								<div class="alert alert-danger animate__animated animate__fadeInDown" role="alert"
+									*ngIf="showErreurStep1 == true">
+									Veuillez fournir un des données ci-dessus ...
+								</div>
+							</form>
+
+						</div>
+						<div class="col-md-6" *ngIf="showStep2 == true">
+							<form>
+								<h6>Décrivez votre voiture </h6>
+
+								<app-comp-immatriculation (selectImmatriculation)="proc_emit_immatriculation($event)">
+								</app-comp-immatriculation>
+
+								<p>Ou</p>
+								<div class="form-row">
+									<div class="form-group col-sm">
+										<app-comp-select-marque (changeMarque)="proc_emit_change_marque($event)">
+										</app-comp-select-marque>
+									</div>
+									<div class="form-group col-sm">
+										<app-comp-select-modele [listeFilterModel]="listeFilterModel"
+											(changeModele)="proc_emit_change_modele($event)"></app-comp-select-modele>
+									</div>
+								</div>
+								<h6>Adresse de l'intervention</h6>
+								<div class="form-row">
+									<div class="form-group col-sm-8">
+										<label>Votre adresse</label>
+										<input class="form-control" name="interventionAdresse"
+											[(ngModel)]="interventionAdresse" type="text">
+									</div>
+									<div class="form-group col-sm-4">
+										<a><span class="material-icons">place</span> Géocaliser</a>
+									</div>
+								</div>
+								<button *ngIf="showErreurStep2 == false" type="submit" class="btn btn-primary"
+									(click)="proc_listeMecano()">Valider</button>
+								<div class="alert alert-danger animate__animated animate__fadeInDown" role="alert"
+									*ngIf="showErreurStep2 == true">
+									Veuillez fournir les spécifications ci-dessus
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div id="menu1" class="tab-pane fade">
+					<div class="row">
+						<div class="col-md-6">
+							<form>
+								<h6>Veuillez décrire le problème</h6>
+								<div class="form-group">
+									<textarea class="form-control"></textarea>
+								</div>
+								<div class="form-group form-file">
+									<label>Choisir une autre photo</label>
+									<input type="file" data-buttonText="Your label here.">
+								</div>
+								<button type="submit" class="btn btn-primary">Envoyer</button>
+							</form>
+						</div>
+						<div class="col-md-6">
+							<form>
+								<h6>Décrivez votre voiture </h6>
+
+								<app-comp-immatriculation (selectImmatriculation)="proc_emit_immatriculation($event)">
+								</app-comp-immatriculation>
+								<p style="margin-top: 1;"> Ou </p>
+								<div class="form-row">
+									<div class="form-group col-sm select-cont">
+										<app-comp-select-marque (changeMarque)="proc_emit_change_marque($event)">
+										</app-comp-select-marque>
+									</div>
+									<div class="form-group col-sm select-cont">
+										<app-comp-select-modele [listeFilterModel]="listeFilterModel"
+											(changeModele)="proc_emit_change_modele($event)"></app-comp-select-modele>
+									</div>
+								</div>
+								<h6>Adresse de l'intervention</h6>
+								<div class="form-row">
+									<div class="form-group col-sm-8">
+										<label>Votre adresse</label>
+										<input class="form-control" type="text">
+									</div>
+									<div class="form-group col-sm-4">
+										<a><span class="material-icons">place</span> Géocaliser</a>
+									</div>
+								</div>
+
+								<button type="submit" class="btn btn-primary"
+									(click)="proc_listeMecano()">Valider</button>
+
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</ng-template>
+
+	<!---Pop up option2: Je sais ce qu'a ma voiture--->
+	<ng-template #option2 id="modal-option-2" let-c="close" let-d="dismiss">
+
+		<div class="modal-header">
+			<h5>Obtenez votre devis gratuit immédiatement et Réservez votre rendez-vous en ligne</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close"
+				(click)="closeModalDiagnostic2()">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="modal-body modal-option-2">
+			<div class="row">
+				<div class="col-md-6">
+					<form>
+						<h6>Veuillez décrire le problème</h6>
+						<app-section-management
+							[listSection]="listSection"
+							(showRightMenu)="showRightFormular($event)"
+						>
+						</app-section-management>
+					</form>
+				</div>
+				<div class="col-md-6" *ngIf="showRightMenu == true">
+					<form>
+						<h6>Décrivez votre voiture </h6>
+
+						<app-comp-immatriculation (selectImmatriculation)="proc_emit_immatriculation($event)">
+						</app-comp-immatriculation>
+
+						<p>Ou</p>
+						<div class="form-row">
+							<div class="form-group col-sm select-cont">
+								<!-- <label>Marque</label>
+								<select class="form-control" name="vehiculeMarque" [(ngModel)]="vehiculeMarque" #marque
+									(change)="onChangeMarque($event, marque)"
+									[attr.disabled]="loadedMarque? true : null">
+									<ng-template ngFor let-marque [ngForOf]="DataMarque">
+										<option [value]="marque.marque">{{marque.marque}}</option>
+									</ng-template>
+								</select> -->
+								<app-comp-select-marque (changeMarque)="proc_emit_change_marque($event)">
+								</app-comp-select-marque>
+							</div>
+							<div class="form-group col-sm select-cont">
+								<!-- <label>Modèle</label>
+								<select class="form-control" name="vehiculeModele" [(ngModel)]="vehiculeModele" #modele
+									(change)="onChangeModele($event, modele)">
+									<ng-template ngFor let-modele [ngForOf]="DataModele">
+										<option [value]="modele.modele">{{modele.modele}}</option>
+									</ng-template>
+								</select> -->
+
+								<app-comp-select-modele [listeFilterModel]="listeFilterModel"
+									(changeModele)="proc_emit_change_modele($event)"></app-comp-select-modele>
+
+							</div>
+						</div>
+						<h6>Adresse de l'intervention</h6>
+						<div class="form-row">
+							<div class="form-group col-sm-8">
+								<label>Votre adresse</label>
+								<input class="form-control" type="text" name="interventionAdresse"
+									[(ngModel)]="interventionAdresse">
+							</div>
+							<div class="form-group col-sm-4">
+								<a><span class="material-icons">place</span> Géocaliser</a>
+							</div>
+							<!-- Besoin d'un API Key google console pays pour le fonctionnement  -->
+							<!-- <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"/> -->
+
+						</div>
+						<button type="submit" class="btn btn-primary" (click)="proc_listeMecano()">Valider</button>
+					</form>
+				</div>
+			</div>
+		</div>
+
+	</ng-template>
+
+	<!-- Debut Chat -->
+	<app-chat-inbox></app-chat-inbox>
+	<!-- <button class="open-button" (click)="openForm()"><span class="material-icons">chat_bubble_outline</span> Vous souhaitez discuter ? <span class="material-icons right">expand_less</span></button>
+
+	<div class="chat-popup" id="myForm">
+		<button type="button" class="btn cancel" (click)="closeForm()"><span class="material-icons">chat_bubble_outline</span> Vous souhaitez discuter ? <span class="material-icons right">expand_more</span></button>
+		<form action="/action_page.php" class="form-container">
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</p>
+			<label><b>Présentez-vous</b></label>
+			<input class="form-control" type="text" placeholder="Nom, adresse email">
+			<label><b>Message</b></label>
+			<textarea placeholder="Message" class="form-control"></textarea>
+			<button type="submit" class="btn">Envoyer</button>
+		</form>
+	</div> -->
+
+	<script>
+		function openForm() {
+			document.getElementById("myForm").style.display = "block";
+		}
+
+		function closeForm() {
+			document.getElementById("myForm").style.display = "none";
+		}
+	</script>
+
+	<script>
+		function openNav() {
+			document.getElementById("nav").style.width = "250px";
+		}
+
+		function closeNav() {
+			document.getElementById("nav").style.width = "0";
+		}
+	</script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGXDZajbxnXvvbC7TobxGQHzjfUPPMuMs&libraries=places&language=en"></script>
+
+</div>

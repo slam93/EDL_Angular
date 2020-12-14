@@ -1,0 +1,106 @@
+<div class="modal-body modal-suscribe">
+  <form>
+    <div class="form-row">
+
+      <div class="form-group col-md-6">
+        <label>Nom <span>*</span></label>
+        <input class="form-control" type="text" name="inputNom" [(ngModel)]="nom" (ngModelChange)="validateNom()">
+        <div class="display-error" *ngIf="errorNom">
+          <span>Nom trop court (min 2 caractères)</span>
+        </div>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label>Prénom <span>*</span></label>
+        <input class="form-control" type="text" name="inputPrenom" [(ngModel)]="prenom"
+          (ngModelChange)="validatePrenom()">
+        <div class="display-error" *ngIf="errorPrenom">
+          <span>Prénom trop court (min 2 caractères)</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label> Nom d'utilisateur <span>*</span></label>
+        <input class="form-control" type="text" name="inputSurom" [(ngModel)]="surnom"
+          (ngModelChange)="validateSurnom()">
+        <div class="display-error" *ngIf="errorSurnom">
+          <span>Surnom trop court (min 2 caractères)</span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Numéro de téléphone portable <span>*</span></label>
+    </div>
+
+    <!--The content below is only a placeholder and can be replaced.-->
+    <form #f="ngForm" [formGroup]="phoneForm">
+
+      <ngx-intl-tel-input [inputId]="'adsasd'" [cssClass]="'form-control'" [preferredCountries]="preferredCountries"
+        [enableAutoCountrySelect]="true" [enablePlaceholder]="true" [searchCountryFlag]="true"
+        [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]" [selectFirstCountry]="false"
+        [selectedCountryISO]="CountryISO.France" [maxLength]="15" [tooltipField]="TooltipLabel.Name"
+        [phoneValidation]="true" [separateDialCode]="separateDialCode" name="phone" [(ngModel)]="phone"
+        formControlName="phone">
+      </ngx-intl-tel-input>
+
+      <!-- <div class="mb-2">
+            <button (click)="f.reset()">Reset</button>
+          </div> -->
+
+    </form>
+
+    <div class="display-error" *ngIf="errorPhone">
+      <span>Numéro téléphone invalide </span>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>Email <span>*</span></label>
+        <input type="email" class="form-control" name="inputEmail" [(ngModel)]="email"
+          (ngModelChange)="validateEmail()">
+        <div class="display-error" *ngIf="errorEmail">
+          <span>Email invalide</span>
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <label>Mot de passe <span>*</span></label>
+        <input type="password" class="form-control" name="inputPassword" [(ngModel)]="password"
+          (ngModelChange)="validatePassword()">
+        <div class="display-error" *ngIf="errorPassword">
+          <span>Sécurité trop court (Min 6 caractères)</span>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+
+      <div class="col-md-5" *ngIf="alertEmailExist == true" class="alert alert-danger my-success" role="alert">
+        L'adresse email est déjà utilisée
+      </div>
+
+      <div class="form-group col-md-5" *ngIf="afficheNotifSuccee == false && afficheChargement == false">
+        <button type="submit" class="btn btn-primary" (click)="proc_inscription()">Envoyer</button>
+      </div>
+
+      <div class="col-md-5" *ngIf="afficheNotifSuccee == true" class="alert alert-success my-success" role="alert">
+        Inscription effectuée avec succée
+      </div>
+
+      <div class="col-md-5 my-chargement" *ngIf="afficheChargement == true">
+        <img src="assets/images/Infinity-1s-200px.gif" alt="chargement" style="max-width: 30%;">
+      </div>
+
+      <div class="form-group col-md-7 text-right">
+        <p>Déjà inscrit ? <a href="JavaScript:Void(0);">Merci de vous identifier</a></p>
+      </div>
+
+    </div>
+    <div class="suscribe-infos">
+      <p><span class="material-icons">info</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut.</p>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,14 @@
+@import "./../../../assets/a-base.css";
+
+
+
+.gac-container::-webkit-scrollbar {
+    display: none;
+}
+#topNav {
+    margin: 1em 0;
+    position: absolute;
+    z-index: 1111111;
+    width: 100%;
+    color: #fff;
+}

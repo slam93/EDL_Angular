@@ -1,0 +1,78 @@
+<div class="divScan">
+      <zxing-scanner #scanner [enable]="scannerEnabled"
+                     (scanSuccess)="scanSuccessHandler($event)">
+      </zxing-scanner>
+  <div class="divOverlay">
+    <div>
+      <p class="text-white text-uppercase">{{this.location?.bienvenue}}</p>
+    </div>
+    <div>
+      <p class="text-white">{{this.location?.message_bienvenue}}</p>
+    </div>
+    <div>
+      <img class="imgScan" src="assets/image/scan.png" />
+    </div>
+    <div>
+      <p class="text-white">{{this.location?.message_fin_bienvenue+" "}}
+      <a class="text-click" (click)="open_md(connect)" data-toggle="modal" data-target="#modal-connect">{{this.location?.entrer_num}}</a>
+      </p>
+      <a (click)="open_md(reinitiale)" data-toggle="modal" data-target="#modal-reinitialise">
+        <img class="imgManual" src="assets/image/manual.png" />
+      </a>
+    </div>
+  </div>
+
+  <ng-template #connect id="modal-connect" let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h5>Numeros d'appartement</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="close_modal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form [formGroup]="registerForm" (ngSubmit)="envoie_num()">
+        <div class="form-group">
+          <input type="number" formControlName="numeros" class="form-control" placeholder="Numeros">
+          <div *ngIf="submitted && this.registerForm.controls['numeros'].errors" class="div_error">
+            <div *ngIf="this.registerForm.controls['numeros'].errors.required" >Champs requis</div>
+          </div>
+        </div>
+        <div class="text-center" *ngIf="afficheNotifDanger == false">
+          <button *ngIf="afficheChargement == false" type="submit" class="btn btn-primary">Envoyer</button>
+          <button *ngIf="afficheChargement == true" type="button" class="btn btn-primary opacity">Envoyer</button>
+        </div>
+        <div class="col-md-5" *ngIf="afficheNotifDanger == true"  class="alert alert-danger my-danger" role="alert">
+          {{messageErreur}}
+        </div>
+      </form>
+    </ng-template>
+
+  <ng-template #reinitiale id="modal-reinitialise" let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h5>{{this.location?.reinitialisation}}</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="close_modal()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <form [formGroup]="reinitialiseForm" (ngSubmit)="envoie_reinitialise()">
+      <div class="form-group">
+        <input type="text" formControlName="code_sejour" class="form-control" placeholder={{this.location?.code_sejour_reinitialisation}}>
+        <div *ngIf="submittedReinitiale && this.reinitialiseForm.controls['code_sejour'].errors" class="div_error">
+          <div *ngIf="this.reinitialiseForm.controls['code_sejour'].errors.required" >Champs requis</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="password" formControlName="password" class="form-control" placeholder={{this.location?.mdp_reinitialisation}}>
+        <div *ngIf="submittedReinitiale && this.reinitialiseForm.controls['password'].errors" class="div_error">
+          <div *ngIf="this.reinitialiseForm.controls['password'].errors.required" >Champs requis</div>
+        </div>
+      </div>
+      <div class="text-center" *ngIf="afficheNotifDanger == false">
+        <button *ngIf="afficheChargement == false" type="submit" class="btn btn-primary">{{this.location?.btn_reinitialisation}}</button>
+        <button *ngIf="afficheChargement == true" type="button" class="btn btn-primary opacity">{{this.location?.btn_reinitialisation}}</button>
+      </div>
+      <div class="col-md-5" *ngIf="afficheNotifDanger == true"  class="alert alert-danger my-danger" role="alert">
+        {{messageErreur}}
+      </div>
+    </form>
+  </ng-template>
+</div>

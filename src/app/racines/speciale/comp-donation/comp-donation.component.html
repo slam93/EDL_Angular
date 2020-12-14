@@ -1,0 +1,41 @@
+<h3> Donation vote </h3>
+
+<div class="row">
+
+    <div class="col-6" >
+        <div class="row donate-present">
+
+            <div class="col-8">
+                Solidarité Féminime
+            </div>
+
+            <div class="col-4">
+                {{ entityFemmeSolidarite.click }}
+            </div>
+
+            <div>
+                <button class="btn btn-primary" (click)="proc_update_femmeSolidarite()" >Voter</button>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-6">
+        <div class="row donate-present">
+
+            <div class="col-8">
+                WWF
+            </div> 
+
+            <div class="col-4">
+                {{ entityWWF.click }}
+            </div>
+
+            <div>
+                <button class="btn btn-primary" (click)="proc_update_wwf()">Voter</button>
+            </div>
+
+        </div>
+    </div>
+
+</div>

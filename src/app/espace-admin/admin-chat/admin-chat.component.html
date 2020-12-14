@@ -1,0 +1,36 @@
+<table datatable class="row-border hover" [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+    <thead>
+        <tr>
+            <th>elail </th>
+            <th>Message</th>
+            <th>Status lecture</th>
+            <th>date</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of listeChat, let i = index" (click)="emitList(item)"
+            class=" animate__animated animate__flipInX cursor-cl">
+            <td>
+                <span >{{item.emailSender}}</span> 
+            </td>
+            <td>
+                <span >{{item.message}}</span> 
+
+            </td>
+            <td>
+                <span > deja Lu </span> 
+            </td>
+            <td>
+                <span >{{item.createdAt | date: 'dd MMMM yyyy'}}</span> 
+            </td>
+            <td>
+                <span ></span> 
+            </td>
+            <td>
+                <span ></span>
+            </td>
+        </tr>
+    </tbody>
+</table>

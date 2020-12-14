@@ -1,0 +1,149 @@
+<!-- Deja connecte en tant que client  -->
+
+<body class="list">
+
+	<div id="main" class="animate__animated animate__fadeInLeft">
+		<header>
+			<div class="head-list">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-5 title-list">
+							<p>
+								<span class="material-icons">wb_incandescent</span>
+								{{contextHeader}}
+							</p>
+						</div>
+						<div class="col-md list-infos">
+							<p><strong>Votre véhicule :</strong> {{vehicleBand | titlecase}}
+								{{vehicleModel | titlecase}} </p>
+							<p><strong>Lieu de l'intervention :</strong> {{interventionAdresse | titlecase}} </p>
+							<a class="btn btn-primary" (click)="proc_route_accueil()">Choisir une nouvelle
+								prestation</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<section class="view-list">
+			<div class="container">
+				<!-- <h1>Diagnostique électronique Réparations {{ValueModele}} </h1> -->
+				<h1>Liste des garages prestataires</h1>
+
+				<ng-container *ngFor="let item of listSkillbyDiagnostic2, let i = index">
+					<div class="row list-item" *ngFor="let itemMech of listMechanics[i]">
+						<div class="col-md">
+							<div class="garage-infos">
+								<img src="assets/images/garage-logo.jpg" />
+								<h2>{{itemMech.name}}</h2>
+								<p class="price">{{item.diagnostic2.price}}€</p>
+								<p class="adress"><span class="material-icons">place</span> {{itemMech.address}}</p>
+								<p class="stars"><span class="material-icons red">star</span><span
+										class="material-icons red">star</span><span
+										class="material-icons red">star</span><span
+										class="material-icons red">star</span><span class="material-icons">star</span>
+								</p>
+								<p class="map">à 08km - à 15 Minute de vous</p>
+							</div>
+							<div class="competences">
+								<h4>Prestations</h4>
+								<ul>
+									<li>{{item.diagnostic2.description}}</li>
+								</ul>
+							</div>
+							<a href="#" class="btn btn-primary"><span class="material-icons">chat_bubble_outline</span>
+								Discuter avec ce mecano</a>							
+						</div>
+
+						<!-- COMP CALENDAR -->
+						<div class="col-6">
+							<app-comp-calendar 
+								[dateStart]="dateStart" 
+								[dateEnd]="dateEnd" 
+								[hourOpen]="hourOpen"
+								[hourClose]="hourClose" 
+								[listInterventionAgenda]="listeInterventionMecano"
+								(changeIntervention)="showPopupInvervention(item)">
+							</app-comp-calendar>
+						</div>
+
+					</div>
+				</ng-container>
+
+			</div>
+		</section>
+
+	</div>
+
+	<!---Pop up detail garage--->
+	<ng-template #detailIntervention id="modal-detailIntervention" let-c="close"
+	let-d="dismiss">
+	<div class="modal-header">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-5 title-list">
+					<span class="material-icons">wb_incandescent</span>
+					{{contextHeader}}
+				</div>
+				<div class="col-md list-infos">
+					<p><strong>Votre véhicule :</strong> {{vehicleBand | titlecase}}
+						{{vehicleModel | titlecase}}
+					</p>
+					<p><strong>Lieu de l'intervention :</strong>
+						{{interventionAdresse | titlecase}}</p>
+				</div>
+			</div>
+		</div>
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close"
+			(click)="proc_close()">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body" class="modal-detail-test">
+		<div class="row list-item">
+			<div class="col-md">
+				<div class="garage-infos">
+					<img src="assets/images/garage-logo.jpg" />
+					<h2>{{mechanicName}}</h2>
+					<p class="adress"><span
+							class="material-icons">place</span>
+						{{mechanicAdresse}}</p>
+					<p class="stars"><span class="material-icons red">star</span><span
+							class="material-icons red">star</span><span
+							class="material-icons red">star</span><span
+							class="material-icons red">star</span><span
+							class="material-icons">star</span></p>
+					<p class="map">à 08km - à 15 Minute de vous</p>
+				</div>
+				<div class="competences">
+					<h4>Prestations</h4>
+					<ul>
+						<li>{{diagnostic2Description}}</li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-md garage-price">
+				<p class="price">{{diagnostic2Price}}€</p>
+				<p class="rdv"><strong>Rendez-vous : </strong>{{selectDay | date: 'EEEE dd MMMM yyyy'}} à
+					{{selectHeure}}:00</p>
+				<a class="btn btn-primary" (click)="proc_route_accueil()">
+					<span class="material-icons">chat_bubble_outline</span> Choisir une
+					nouvelle prestation
+				</a>
+			</div>
+		</div>
+		<div class="text-center footer-detail">
+			<p>Vous pourrez modifier ou annuler votre rendez-vous en cas d'empêchement. Le
+				solde de la commande est
+				à régler au mécano une fois seulement la prestation effectuée. </p>
+			<!-- <a class="btn btn-primary"
+				(click)="proc_connexionSuiteAction(selectMecano.mecano, selectDay, selectHeure)">Valider</a> -->
+
+				<a class="btn btn-primary"
+				(click)="addIntervention()">Valider</a>
+		</div>
+	</div>
+</ng-template>
+
+
+</body>

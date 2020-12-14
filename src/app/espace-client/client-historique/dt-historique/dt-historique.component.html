@@ -1,0 +1,31 @@
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+
+    <thead>
+        <tr>
+            <th>Modèle</th>
+            <th>Date heure</th>
+            <th>Adresse</th>
+            <th *ngIf="type !== 'byMechanic'" >Mécanicien</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let intervention of reqListeHistorique" class=" animate__animated animate__flipInX">
+            <td>
+                <div *ngIf="intervention?.vehicle?.model !== null"> {{intervention?.vehicle?.model}}  </div>
+                <div *ngIf="intervention?.vehicle?.model === null" > aucun </div>
+            </td>
+            <td>{{intervention?.dateInterventionBegin | date: 'dd MMM yyyy'}} </td>
+            <td>{{intervention?.address}}</td>
+            <td *ngIf="type !== 'byMechanic'">
+                <ng-container *ngIf="intervention?.mechanic?.name !== null"> {{intervention?.mechanic?.name}} </ng-container>
+                <ng-container *ngIf="intervention?.mechanic?.name == null"> aucun </ng-container>
+            </td>
+            <td><button type="button" class="btn btn-sm btn-info grad-view" (click)="proc_open_lg_detailIntervention(intervention)"> 
+                <span class="material-icons" style="margin-top: 3px;" >visibility</span> 
+            </button></td>
+        </tr>
+    </tbody>
+
+</table>

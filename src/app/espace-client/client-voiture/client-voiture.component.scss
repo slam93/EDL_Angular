@@ -1,0 +1,13 @@
+// @import "node_modules/datatables.net-dt/css/jquery.dataTables.css";
+
+@import "./../../../../node_modules/datatables.net-dt/css/jquery.dataTables.css";
+
+.modal-footer button {
+    transition: 0.25s;
+    padding: 8px 25px 11px;
+    background: linear-gradient(to right,#E0AC8B,#9C3183);
+    border: none;
+    border-radius: 100px;
+    color: #fff;
+    font-weight: bold;
+}

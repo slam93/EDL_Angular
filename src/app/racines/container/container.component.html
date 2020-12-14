@@ -1,0 +1,255 @@
+<body class="home">
+
+	<!--  #################################     Page container  1 : espace-client    ###################################################  -->
+
+	<ng-container *ngIf="container=='container1'">
+
+		<div id="topNav">
+			<button class="openbtn d-md-none"><span class="material-icons">reorder</span></button>
+			<ul>
+				<li>
+					<i class="material-icons">message</i>
+					<span *ngIf="numberMessage !== 0" class="notifNum"> numberMessage </span>
+				</li>
+				<li>
+					<i class="material-icons">notifications</i>
+					<span *ngIf="numberNotification !== 0" class="notifNum"> numberNotification </span>
+				</li>
+				<li>
+					{{ connectedNom }}
+				</li>
+				<li>
+
+					<div id="avatarContainer">
+						<div ngbDropdown class="d-inline-block">
+							<img id="dropdownBasic1" ngbDropdownToggle src="{{connectedImage}}" alt="avatar">
+							<div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+								<button ngbDropdownItem (click)="proc_route_set('app-client-reglage', 2)">Mon
+									compte</button>
+								<button ngbDropdownItem
+									(click)="proc_route_set('app-client-accueil', 1)">Accueil</button>
+								<button ngbDropdownItem (click)="proc_clickDeconnexion()">Déconnexion</button>
+							</div>
+						</div>
+					</div>
+
+				</li>
+			</ul>
+		</div>
+
+		<ng-container [ngSwitch]="pageActual">
+
+			<div class="gac-container">
+				<!-- Page default pour l'espace client  -->
+				<app-client-accueil (changeContainer)="changeContainer($event)" *ngSwitchCase="'app-client-accueil'">
+				</app-client-accueil>
+
+				<app-liste-offre-disponible (changeContainer)="changeContainer($event)"
+					*ngSwitchCase="'app-liste-offre-disponible'"></app-liste-offre-disponible>
+			</div>
+
+		</ng-container>
+
+	</ng-container>
+
+	<!--  #################################     END container  1 : espace-client    ###################################################  -->
+
+	<!--  #################################     Page container  2 : espace-client    ###################################################  -->
+
+	<ng-container *ngIf="container=='container2'">
+
+		<div id="wrapper" class="container-fluid">
+			<div class="row">
+				<div class="col-md-3 animate__animated animate__fadeInLeft" id="left">
+					<button class="closebtn d-md-none"><span class="material-icons">close</span></button>
+					<div id="logoContainer">
+						<img src="assets/images/logo.png" alt="Logo">
+					</div>
+					<div id="nav-container">
+						<nav>
+							<ul>
+								<!-- MENU ADMIN -->
+								<li *ngIf="userRole == true" (click)="proc_route_set('app-admin-user-management', 2)"
+									class="cursor-pt">
+									<i class="material-icons">person</i>Liste des utilisateurs
+								</li>
+								<li *ngIf="userRole == true"
+									(click)="proc_route_set('app-admin-category-management', 2)" class="cursor-pt">
+									<i class="material-icons">account_balance_wallet</i>Mes catégories d'abonnements
+								</li>
+								<li *ngIf="userRole == true"
+									(click)="proc_route_set('app-admin-subscriber-management', 2)" class="cursor-pt">
+									<i class="material-icons">subject</i>Mes abonnés
+								</li>
+								<li *ngIf="userRole == true"
+									(click)="proc_route_set('app-admin-vehicles-management', 2)" class="cursor-pt">
+									<i class="material-icons">local_car_wash</i>Mes véhicules
+								</li>
+								<li *ngIf="userRole == true" (click)="proc_route_set('app-admin-section-management', 2)"
+									class="cursor-pt">
+									<i class="material-icons">sort</i>Mes Sections
+								</li>
+								<li *ngIf="userRole == true"
+									(click)="proc_route_set('app-admin-diagnostic2-management', 2)" class="cursor-pt">
+									<i class="material-icons">rv_hookup</i>Mes diagnostiques
+								</li>
+								<li *ngIf="userRole == true"
+									(click)="proc_route_set('app-admin-chat', 2)" class="cursor-pt">
+									<i class="material-icons">rv_hookup</i>Mes Conversations
+								</li>
+
+								<!-- MENU CLIENT -->
+								<li *ngIf="userRoleClient == true" (click)="proc_route_set('app-client-voiture', 2)" class="cursor-pt">
+									<i class="material-icons md-18">directions_car</i>Ma voiture
+								</li>
+								<li *ngIf="userRoleClient == true" (click)="proc_route_set('app-client-historique', 2)" class="cursor-pt">
+									<i class="material-icons">build</i>Historique de mes réparations
+								</li>
+								<li *ngIf="userRoleClient == true" (click)="proc_route_set('app-client-payment', 2)" class="cursor-pt">
+									<i class="material-icons">content_paste</i>Mes factures
+								</li>
+								<li *ngIf="userRoleClient == true" class="cursor-pt">
+									<i class="material-icons">place</i>Mon adresse
+								</li>
+								<li *ngIf="userRoleClient == true" class="cursor-pt">
+									<i class="material-icons">multiline_chart</i>Statut des abonnements
+								</li> 
+
+
+								<!-- MENU MECANO -->
+								<li *ngIf="userRoleMecano == true" (click)="proc_route_set('app-mecano-agenda', 2)" class="cursor-pt">
+									<i class="material-icons md-18">directions_car</i>Mon agenda
+								</li>
+								<li *ngIf="userRoleMecano == true" (click)="proc_route_set('app-mecano-abonnement', 2)" class="cursor-pt">
+									<i class="material-icons">build</i>Mon abonnement
+								</li>
+								<li *ngIf="userRoleMecano == true" (click)="proc_route_set('app-client-payment', 2)" class="cursor-pt">
+									<i class="material-icons">content_paste</i>Mes factures
+								</li>
+
+								<!-- <li *ngIf="userRoleClient == true || userRoleMecano == true" (click)="proc_route_set('app-client-cropimage', 2)" class="cursor-pt">
+									<i class="material-icons">announcement</i>Ecran Test
+								</li> -->
+
+							</ul>
+						</nav>
+					</div>
+				</div>
+				<div class="col-md-9" id="right">
+
+					<div id="topNav" style="width: 90%;color: black;">
+						<button class="openbtn d-md-none"><span class="material-icons">reorder</span></button>
+						<ul>
+							<li>
+								<i class="material-icons">message</i>
+								<span *ngIf="numberMessage !== 0" class="notifNum"> numberMessage </span>
+							</li>
+							<li>
+								<i class="material-icons">notifications</i>
+								<span *ngIf="numberNotification !== 0" class="notifNum"> numberNotification </span>
+							</li>
+							<li>
+								{{ connectedNom }}
+
+							</li>
+							<li>
+								<div id="avatarContainer">
+									<div ngbDropdown class="d-inline-block">
+										<img id="dropdownBasic1" ngbDropdownToggle src="{{connectedImage}}"
+											alt="avatar">
+										<div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+											<button ngbDropdownItem
+												(click)="proc_route_set('app-client-reglage', 2)">Mon compte</button>
+											<button ngbDropdownItem
+												(click)="proc_route_set('app-client-accueil', 1)">Accueil</button>
+											<button ngbDropdownItem
+												(click)="proc_clickDeconnexion()">Déconnexion</button>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+
+					<section>
+						<div class="gac-container" style="margin-top: 70px; height: 570px; overflow-y: auto;">
+							<ng-container [ngSwitch]="pageActual">
+
+								<!-- CONTAINER CLIENT -->
+								<app-client-reglage (changeContainer)="changeContainer($event)"
+									(changeOnload)="changeOnload($event)" *ngSwitchCase="'app-client-reglage'">
+								</app-client-reglage>
+
+								<app-client-voiture (changeContainer)="changeContainer($event)"
+									*ngSwitchCase="'app-client-voiture'">
+								</app-client-voiture>
+
+								<app-client-historique (changeContainer)="changeContainer($event)" (changechat)="changechat($event)"
+									*ngSwitchCase="'app-client-historique'">
+								</app-client-historique>
+
+								<app-client-payment (changeContainer)="changeContainer($event)"
+									*ngSwitchCase="'app-client-payment'">
+								</app-client-payment>
+
+								<app-client-cropimage (changeContainer)="changeContainer($event)"
+									*ngSwitchCase="'app-client-cropimage'"
+								></app-client-cropimage>
+
+								<!-- CONTAINER ADMIN -->
+								<app-admin-user-management (changeContainer)="changeContainer($event)"
+									*ngSwitchCase="'app-admin-user-management'">
+								</app-admin-user-management>
+
+								<app-admin-category-management (changeContainer)="changeContainer($event)"
+									*ngSwitchCase="'app-admin-category-management'">
+								</app-admin-category-management>
+
+								<app-admin-subscription-management (changeContainer)="changeContainer($event)"
+									*ngSwitchCase="'app-admin-subscriber-management'">
+								</app-admin-subscription-management>
+
+								<app-admin-vehicles-management (changeContainer)="changeContainer($event)"
+									*ngSwitchCase="'app-admin-vehicles-management'">
+								</app-admin-vehicles-management>
+
+								<app-admin-section-management (changeContainer)="changeContainer($event)"
+									*ngSwitchCase="'app-admin-section-management'">
+								</app-admin-section-management>
+
+								<app-admin-diagnostic2-management (changeContainer)="changeContainer($event)"
+									*ngSwitchCase="'app-admin-diagnostic2-management'">
+								</app-admin-diagnostic2-management>
+
+								<app-admin-chat (changeContainer)="changeContainer($event)"
+									*ngSwitchCase="'app-admin-chat'">
+								</app-admin-chat>
+
+								<!-- CONTAINER MECANO -->
+								<app-mecano-agenda (changeContainer)="changeContainer($event)" (changechat)="changechat($event)"
+								(changeOnload)="changeOnload($event)" *ngSwitchCase="'app-mecano-agenda'"></app-mecano-agenda>
+
+								<app-mecano-abonnement (changeContainer)="changeContainer($event)"
+								(changeOnload)="changeOnload($event)" *ngSwitchCase="'app-mecano-abonnement'"></app-mecano-abonnement>
+
+							</ng-container>
+						</div>
+					</section>
+
+				</div>
+			</div>
+		</div>
+
+	</ng-container>
+	<!--  #################################     END container  2 : espace-client    ###################################################  -->
+
+	<app-chat-inbox [item]="interventionSelected"></app-chat-inbox>
+	<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script src="assets/js/mobile.js"></script> -->
+</body>
